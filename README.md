@@ -12,5 +12,13 @@
       - Bootstrap as css framework
       - Angualar  as js  framework
 
+Folder PATH listing
 
-      /* coming soon :) */
+�   index.php
+�   README.md
+�   
+����controllers
+����core
+����lib
+����models
+����view
