@@ -25,6 +25,9 @@ require_once (INC . 'general.php');
 System::Store ( 'tpl', new RainTPL () );
 
 // strore object of DB CLASS
-System::Store ( 'db', new mysql () );
+
+require_once (CORE . 'pdo.php');
+System::Store ( 'db', new MyPDO() );
+
 
 

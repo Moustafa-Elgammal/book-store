@@ -1,3 +1,5 @@
 <?php
-require_once 'init.php';
-echoln('Book-Store starts');
+
+include_once"globals.php";
+
+System::Get('db')->Execute();

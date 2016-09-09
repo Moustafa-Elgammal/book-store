@@ -2,8 +2,8 @@
 /*
  * db info
  */
-define ( 'HOSTNAME', 'alnoureyehos.ipagemysql.com' );
-define ( "USERNAME", 'shitter' );
-define ( "PASSWORD", 'SDF$%^DFG%$^');
-define ( "DBNAME", 'shitter' );
-?>
+define ( 'HOSTNAME', 'localhost' );
+define ( "USERNAME", 'book_store' );
+define ( "PASSWORD", '');
+define ( "DBNAME", 'root' );
+
