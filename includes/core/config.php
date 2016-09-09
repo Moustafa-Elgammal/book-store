@@ -3,7 +3,8 @@
  * db info
  */
 define ( 'HOSTNAME', 'localhost' );
-define ( "USERNAME", 'book_store' );
+define ( "DBNAME", 'book_store' );
+define ( "USERNAME", 'root' );
 define ( "PASSWORD", '');
-define ( "DBNAME", 'root' );
+
 

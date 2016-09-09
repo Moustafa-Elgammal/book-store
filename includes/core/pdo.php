@@ -20,7 +20,7 @@ class MyPDO {
     public function dbconnect() {
 
         try {
-            $this->connection = new PDO(HOSTNAME, USERNAME, PASSWORD);
+            $this->connection = new PDO("mysql:host=".HOSTNAME.";dbname=".DBNAME.";",USERNAME,"");
             if ($this->connection) {
                 return TRUE;
             }
@@ -97,7 +97,7 @@ class MyPDO {
     }
 
     /**
-     * Get the number of affected rows
+     * Get the number of affect ed rows
      * @return int
      */
     public function AffectedRows() {
