@@ -1,6 +1,3 @@
 <?php
 require_once 'init.php';
-
-echoln('init file loaded');
-
- ?>
+echoln('Book-Store starts');
