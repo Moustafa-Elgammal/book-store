@@ -11,11 +11,15 @@ define ( "MODELS", INC . '/models/' );
 define ( "CONTROLLERS", INC . '/controllers/' );
 define ( "LIBS", INC . '/libs/' );
 
+
 /*
  * requiring the main System files
  */
 require_once (CORE . 'config.php');
-require_once (CORE . 'mysql.class.php');
+
+//require_once (CORE . 'mysql.class.php');
+require_once (CORE . 'pdo.php');
+
 require_once (CORE . 'raintpl.class.php');
 require_once (CORE . 'system.class.php');
 require_once (CORE . 'transcript.php');
