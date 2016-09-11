@@ -18,7 +18,7 @@ class UsersMetaModel {
      * @param string $extra [optional WHERE statement]
      * @return array 2D of the books || or Empty
      */
-    public function GetAllReviews($extra = '')
+    public function GetAllMeta($extra = '')
     {
         $books = array(); //init
 
