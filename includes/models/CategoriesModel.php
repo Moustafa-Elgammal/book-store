@@ -45,7 +45,7 @@ class CategoriesModel {
      */
     public function DeleteCategory($cat_id){
         $id = (int)$cat_id; //init
-        System::Get('db')->Delete($this->table_name,"WHERE book_id = $id"); // delete
+        System::Get('db')->Delete($this->table_name,"WHERE category_id = $id"); // delete
         $x = System::Get('db')->AffectedRows(); //check
         return $x ? true:false; //confirm
     }
