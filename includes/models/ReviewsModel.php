@@ -39,6 +39,29 @@ class ReviewsModel {
     }
 
     /**
+     * get reviews of one book
+     * @param $id
+     * @return array
+     */
+    public function GetByBookID($id){
+         $id = (int)$id; // init
+        $bokks_reviews = $this->GetAllReviews("WHERE review_book_id = $id"); // order
+        return $bokks_reviews; // return data
+    }
+
+    /**
+     * get reviews of one user
+     * @param $id
+     * @return array
+     */
+    public function GetByUserID($id){
+        $id = (int)$id; // init
+        $bokks_reviews = $this->GetAllReviews("WHERE review_user_id = $id"); // order
+        return $bokks_reviews; // return data
+    }
+
+
+    /**
      * Delete a review by it's id
      * @param $id
      * @return bool true when delete,else false
@@ -66,6 +89,7 @@ class ReviewsModel {
         $x = System::Get('db')->AffectedRows(); //check
         return $x? true:false;  //confirm
     }
+
 
 
 
