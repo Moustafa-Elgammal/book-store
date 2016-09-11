@@ -1,8 +1,11 @@
 <?php
 
 class BooksModel {
-    private $table_name = PREFIX."books";
+    private $table_name ;
 
+    public function __construct(){
+        $this->table_name = PREFIX."books";
+    }
 
     /**
      * get all books
@@ -63,6 +66,7 @@ class BooksModel {
         $x = System::Get('db')->AffectedRows(); //check
         return $x? true:false;  //confirm
     }
+
 
 
 }
