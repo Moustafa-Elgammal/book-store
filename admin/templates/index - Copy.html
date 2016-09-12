@@ -1,0 +1,96 @@
+{include="header"}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!--state overview start-->
+		<div class="content">
+			<div class="subscribe">
+				<center class="row">
+					<div class="panel" style="width: 650px">
+						<br> <br> <a><button class="btn btn-info btn-fill">
+								<h3>Visitors {$visitors}</h3>
+							</button></a> <a href="contacts.php"><button class="btn btn-info btn-fill">
+								<h3>Contacts {$contacts}</h3>
+							</button></a> <a href="messages.php"><button class="btn btn-info btn-fill">
+								<h3>Messages {$messages_n}</h3>
+							</button></a><br> <br>
+					</div>
+				</center>
+			</div>
+		</div>
+
+		<div class="container">
+			<h1 class="logo cursive">{$site_name}</h1>
+			<!--  H1 can have 2 designs: "logo" and "logo cursive"           -->
+
+			<!--counter script contant START -->
+			<div style="font-weight: bold; color: white">
+				<h3 style="font-family: Grand Hotel;" id="countdown"></h3>
+			</div>
+			<script>
+				// set the date we're counting down to
+				var target_date = new Date("{$coming_date}").getTime();
+
+				// variables for time units
+				var days, hours, minutes, seconds;
+
+				// get tag element
+				var countdown = document.getElementById("countdown");
+
+				// update the tag with id "countdown" every 1 second
+				setInterval(function() {
+
+					// find the amount of "seconds" between now and target
+					var current_date = new Date().getTime();
+					var seconds_left = (target_date - current_date) / 1000;
+
+					// do some time calculations
+					days = parseInt(seconds_left / 86400);
+					seconds_left = seconds_left % 86400;
+
+					hours = parseInt(seconds_left / 3600);
+					seconds_left = seconds_left % 3600;
+
+					minutes = parseInt(seconds_left / 60);
+					seconds = parseInt(seconds_left % 60);
+					//negativ values
+
+					if (seconds < 0) {
+						days = 0;
+						hours = 0;
+						minutes = 0;
+						seconds = 0;
+					}
+					// set format width function
+					function leftPad(number, targetLength) {
+						var output = number + '';
+						while (output.length < targetLength) {
+							output = '0' + output;
+						}
+						return output;
+					}
+					// format countdown string + set tag value
+					countdown.innerHTML = "<center>" + leftPad(days, 2)
+							+ " Days, " + leftPad(hours, 2) + " Hours, "
+							+ leftPad(minutes, 2) + " Minutes, "
+							+ leftPad(seconds, 2) + " Second.</center>";
+
+				}, 1000);
+			</script>
+			<!--counter script contant  END -->
+
+
+			<div class="content">
+				<div class="subscribe">
+					<center style="font-family: cursive; font-size: 25px;"
+						class="info-text">
+						<strong>{$about}</strong>
+					</center>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</section>
+<!--main content end-->
+{include="footer"}

@@ -1,0 +1,76 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading"> Add New User </header>
+
+
+
+					<div class="panel-body">
+					
+					    {loop="message"}
+					    <div class="alert alert-block alert-danger fade in">
+                        <button data-dismiss="alert" class="close close-sm" type="button">
+                            <i class="icon-remove"></i>
+                        </button>
+                        
+                        <strong>ERROR ! </strong> {$value}
+                       
+                    </div>
+                     {else}
+                        <h4>e User info</h4>
+                        {/loop}
+					
+						<form action = "updateuser.php"role="form" method="post">
+
+							<div class="form-group">
+								<label for="Name">Name</label> <input class="form-control"
+									for="Name" placeholder="Name" name="name" value="{$name}" required>
+							</div>
+
+							<div class="form-group">
+								<label for="Email">Email</label> <input class="form-control"
+									for="Email" placeholder="Email" name="email" value="{$email}"required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Title">Username</label> <input class="form-control"
+									for="Username" placeholder="Username" name="username" value="{$username}" required>
+							</div>
+							
+		
+
+							<div class="form-group">
+								<label for="Job">Job</label> <input class="form-control"
+									for="Job" placeholder="Job" name="job" value="{$job}" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Is Admin">Is Admin</label>
+								<select name="is_admin">
+								<option value="0">No</option>
+								<option value="1">Yes</option>
+							
+								</select>
+							</div>
+							<input type="hidden"  name="uid" value="{$uid}">
+							<input type="submit" class="btn btn-info" name="submit" value="submit">
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

@@ -1,0 +1,52 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading"> Update Article </header>
+
+
+
+					<div class="panel-body">
+						<form action = "updatearticle.php"role="form" method="post">
+							<div class="form-group">
+								<label for="Title">Title</label>
+								 <input class="form-control" for="Title" name="title" value ="{$title}"  required/>
+								 
+							</div>
+
+							<div class="form-group">
+								<label>Content</label>
+								<textarea cols="60" rows="8" class="form-control" name="content" required>{$content}</textarea>
+							</div>
+
+							<div class="form-group">
+								<label for="Cats">Cats</label>
+								<select name="cats">
+								{loop="cats"}
+								<option value="{$value.cid}">{$value.cname}</option>
+								{/loop}
+								</select>
+							</div>
+
+
+							 <input type ="hidden"  name="id" value = "{$id}" />
+							<input type="submit" class="btn btn-info" name="submit" value="submit"/>
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

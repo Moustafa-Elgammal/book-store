@@ -1,0 +1,41 @@
+{include="header"}
+	 <!-- page start-->
+	 <section id="main-content">
+	 <section class="wrapper">
+<div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              All Cat-Pages
+                               </header>
+                          <table class="table table-striped table-advance table-hover">
+                              <thead>
+                              <tr>
+                              	  <th><i class="icon-arrow-down"></i> CpId</th>
+                                  <th class="hidden-phone"><i class="icon-question-sign"></i>Catpage</th>
+                                  <th><i class=" icon-cog"></i> Control</th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+
+                              {loop="catpages"}
+                              <tbody>
+                              <tr>
+                              	  <td>{$value.cpid}</td>
+                      
+                                  <td class="hidden-phone">{$value.cpname}</td>
+                                  <td>
+                                      <a href="updatecatpages.php?cpid={$value.cpid}" class="btn btn-primary btn-xs"><i class="icon-pencil"></i></a>
+                                      <a href="deletecatpages.php?cpid={$value.cpid}" class="btn btn-danger btn-xs"><i class="icon-trash "></i></a>
+                                  </td>
+                              </tr>
+                              </tbody>
+                              {else}
+                    <h1>No Cat-Pages</h1>
+                              {/loop}
+                          </table>
+                      </section>
+                  </div>
+                  </section>
+                  </section>  
+              <!-- page end-->
+{include="footer"}

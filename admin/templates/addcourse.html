@@ -1,0 +1,59 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading"> Add New Course</header>
+
+
+
+					<div class="panel-body">
+						<form action = "addcourse.php"role="form" method="post">
+							<div class="form-group">
+								<label for="Title">Title</label>
+								 <input class="form-control" for="Title" placeholder="Title" name="title" required>
+							</div>
+
+							<div class="form-group">
+								<label>Description</label>
+								<textarea cols="60" rows="5" class="form-control" name="content" required></textarea>
+							</div>
+							
+							<div class="form-group">
+								<label for="The file Url">The file Url</label>
+								 <input class="form-control" for="The file Url" placeholder="The file Url" name="url">
+							</div>
+                               
+                            
+                          
+
+							<div class="form-group">
+								<label for="pages">pages</label>
+								<select name="pid">
+								{loop="pages"}
+							<option value="{$value.pid}">{$value.cpname}::{$value.pname}</option>
+								{/loop}
+								</select>
+							</div>
+
+
+
+							<input type="submit" class="btn btn-info" name="submit" value="submit">
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

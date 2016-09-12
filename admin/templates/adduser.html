@@ -1,0 +1,75 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading"> Add New User </header>
+
+
+
+					<div class="panel-body">
+
+						<form action = "adduser.php"role="form" method="post">
+
+							<div class="form-group">
+								<label for="Name">Name</label> <input class="form-control"
+									for="Name" placeholder="Name" name="name" required>
+							</div>
+
+							<div class="form-group">
+								<label for="Email">Email</label> <input class="form-control"
+									for="Email" placeholder="Email" name="email" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Title">Username</label> <input class="form-control"
+									for="Username" placeholder="Username" name="username" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Password">Password</label> <input type="password" class="form-control"
+									for="Password" placeholder="password" name="password" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Conform Password">Conform Password</label> <input type="password" class="form-control"
+									for="Conform Password" placeholder="Conform Password" name="re_password" required>
+							</div>
+							
+
+							<div class="form-group">
+								<label for="Job">Job</label> <input class="form-control"
+									for="Job" placeholder="Job" name="job" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="Is Admin">Is Admin</label>
+								<select name="is_admin">
+								<option value="0">No</option>
+								<option value="1">Yes</option>
+							
+								</select>
+							</div>
+
+
+
+
+							<input type="submit" class="btn btn-info" name="submit" value="submit">
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

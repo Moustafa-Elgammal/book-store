@@ -1,4 +1,7 @@
 jQuery(document).ready(function($){
+    $('.msg_close').click(function(){
+        $(this).parent().hide();
+    });
 
     /*--------------admin area queries -------------*/
 

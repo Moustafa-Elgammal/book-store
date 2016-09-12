@@ -1,0 +1,50 @@
+{include="header"}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!--state overview start-->
+		<div class="content"></div>
+		<!--timeline start-->
+		<section class="panel"
+			style="position: absolute; width: 100%; height: auto;
+	/*display:none;*/ display: block; background-color: smokewhite; top: 35%;">
+
+			<div class="panel-body"
+				style="background-color: #BDB6B6; aligne: center;">
+				<div class="text-center mbot30">
+					<h3 style="color:white">Reply to {$name}</h3>
+					<hr>
+				</div>
+				<div class="timeline">
+					<form class="form-inline" role="form" action="message_reply.php"
+						method="post">
+
+						<div class="form-group">
+							<input type="email" name="email" class="form-control transparent"
+								placeholder="email..." value="{$email}" required> <input
+								type="text" name="subject" class="form-control transparent"
+								placeholder="subject..." value="{$subject}" required>
+							<textarea name="content"
+								class="form-control transparent"
+								placeholder="the message content..... ">
+								-------------------------------------------------------------------
+								{$content}</textarea>
+							<hr>
+							<input type="hidden" name="mid" value="{$mid}"> <input
+								type="submit" name="submit" value="Send"
+								class="btn btn-info btn-fill">
+						</div>
+					</form>
+
+				</div>
+
+				<div class="clearfix">&nbsp;</div>
+			</div>
+		</section>
+		<!--timeline end-->
+
+
+	</section>
+</section>
+<!--main content end-->
+{include="footer"}

@@ -1,0 +1,62 @@
+{include="header"}
+<section class="panel">
+	<header class="panel-heading"> Update your site info</header>
+	<div class="panel-body">
+
+		<form action="siteinfo.php" role="form" method="post"
+			enctype="multipart/form-data">
+			<h5 style="color: red">Please check your text befor each Epson
+				type a "\"</h5>
+
+
+			<div class="form-group">
+				<label for="Site Name">Site Name</label> <input class="form-control"
+					for="Site Name" placeholder="Site Name" name="site_name"
+					value="{$site_name}">
+			</div>
+
+			<div class="form-group">
+				<label>About Site</label>
+				<textarea cols="60" rows="2" class="form-control" name="about"
+					required>{$about}</textarea>
+			</div>
+
+
+			<div class="form-group">
+				<label for="welcome">Welcome Words</label> <input
+					class="form-control" for="welcome" placeholder="welcome"
+					name="welcome" value="{$welcome}">
+			</div>
+
+			<div class="form-group">
+				<label for="Coming date">Coming date
+					<h5 style="color: red">for example Jan 1, 2020 or mm/dd/yyyy</h5>
+				</label> <input class="form-control" for="welcome"
+					placeholder="for example Jan 1, 2020 or mm/dd/yyyy" name="coming_date"
+					value="{$coming_date}">
+			</div>
+			<div class="form-group">
+				<label for="facebook">Facebook URL</label> <input
+					class="form-control" for="facebook" placeholder="facebook"
+					name="facebook" value="{$facebook}">
+			</div>
+			<div class="form-group">
+				<label for="twitter">Twitter URL</label> <input class="form-control"
+					for="twitter" placeholder="twitter" name="twitter"
+					value="{$twitter}">
+			</div>
+			<div class="form-group">
+				<select name='select'>
+					<option value="{$image_url}">old image</option>
+					<option value="new">new image</option>
+				</select> <input type="hidden" name="old_image" value="{$image_url}">
+			</div>
+			<div class="form-group">
+				New Image<input type="file" name="file" />
+			</div>
+			<input type="hidden" name="old_image" value="{$image_url}"> <input
+				type="submit" class="btn btn-info" name="submit" value="submit">
+		</form>
+	</div>
+</section>
+{include="footer"}

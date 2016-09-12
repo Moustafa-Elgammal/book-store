@@ -1,0 +1,48 @@
+{include="header"}
+	 <!-- page start-->
+	 <section id="main-content">
+	 <section class="wrapper">
+
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Videos
+                          </header>
+                          
+                          
+                          <!------videos start-->
+											<div class="panel-body">
+                      <ul class="grid cs-style-3">
+                        {loop="videos"}
+                          <li><header class="panel-heading">
+							<tr>
+								<td><a href="video.php?vid={$value.vid}"><h3>{$value.title}</h3></a></td>
+								<td><a href="updatevideo.php?vid={$value.vid}"
+									class="btn btn-primary"><i class="icon-pencil"></i></a> <a
+									href="deletevideo.php?vid={$value.vid}" class="btn btn-danger"><i
+										class="icon-trash "></i></a></td>
+							</tr>
+						</header>
+						<figure>
+							<iframe width="100%" height="100%"
+								src="http://www.youtube.com/embed/{$value.video_url}">
+							</iframe>
+							<figcaption>
+
+								<span>lorem ipsume </span> <a class="fancybox" rel="group"
+									href="img/gallery/4.jpg">Take a look</a>
+							</figcaption>
+						</figure></li>
+                          {else}
+                          <h2>No Videos</h2>
+                          {/loop}
+                      </ul>
+
+                  </div>
+
+                          <!-- Videos end -->
+                            </section>
+                 
+                  </section>
+                  </section>  
+                
+{include="footer"}

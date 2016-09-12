@@ -1,0 +1,97 @@
+{include="header"}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!--state overview start-->
+					<div class="row state-overview">
+			<div class="col-lg-3 col-sm-6">
+				<section class="panel">
+					<div class="symbol terques">
+						<i class="icon-user"></i>
+					</div>
+					<div class="value">
+						<h1 >{$visitors}</h1>
+						<p>Visitors</p>
+					</div>
+				</section>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<section class="panel">
+					<div class="symbol red">
+						<i class="icon-tags"></i>
+					</div>
+					<div class="value">
+						<h1 >{$courses}</h1>
+						<p>posts</p>
+					</div>
+				</section>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<section class="panel">
+					<div class="symbol yellow">
+						<i class="icon-youtube"></i>
+					</div>
+					<div class="value">
+						<h1 >{$videos}</h1>
+						<p>videos</p>
+					</div>
+				</section>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<section class="panel">
+					<div class="symbol blue">
+						<i class="icon-bar-chart"></i>
+					</div>
+					<div class="value">
+						<h1>{$messages_number}</h1>
+						<p>Messages</p>
+					</div>
+				</section>
+			</div>
+		</div>
+
+
+		<!--timeline start-->
+		<section class="panel">
+
+			<div class="panel-body">
+				<div class="text-center mbot30">
+					<h3 class="timeline-title">Messages</h3>
+					<p class="t-info">The website Feed Back</p>
+				</div>
+				<div class="timeline">
+
+
+					{loop="messages"}
+					<article class="timeline-item alt">
+						<div class="timeline-desk">
+							<div class="panel">
+								<div class="panel-body">
+									<span class="arrow-alt"></span> <span
+										class="timeline-icon green"></span> <span
+										class="timeline-date">{$value.adddate}</span>
+									<h1 class="green">{$value.title}</h1>
+									<p>
+										<a href="mailto:{$value.email}">{$value.username}   :-</a>{$value.content}<span><a
+											href="message.php?mid={$value.mid}" class="green">   see more</a></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</article>
+					{else}
+					<h2>There is no any message</h2>
+					{/loop}
+
+				</div>
+
+				<div class="clearfix">&nbsp;</div>
+			</div>
+		</section>
+		<!--timeline end-->
+
+
+	</section>
+</section>
+<!--main content end-->
+{include="footer"}

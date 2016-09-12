@@ -1,0 +1,51 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">Update the website info </header>
+
+
+
+					<div class="panel-body">
+						<form action="update_us.php" role="form" method="post">
+						
+							<div class="form-group">
+								<label>About</label>
+								<textarea cols="60" rows="8" class="form-control" name="about" 
+									required>{$about}</textarea>
+							</div>
+							
+							<div class="form-group">
+								<label for="facebook">facebook URL</label> <input class="form-control"
+									for="facebook" placeholder="facebook" name="facebook" value="{$facebook}" >
+							</div>
+							<div class="form-group">
+								<label for="youtube">Youtube URL</label> <input class="form-control"
+									for="youtube" placeholder="youtube" name="youtube" value="{$youtube}">
+							</div>
+							<div class="form-group">
+								<label for="Blogger">Blogger URL</label> <input class="form-control"
+									for="Blogger" placeholder="Blogger" name="blogger"  value="{$blogger}">
+							</div>
+
+							<input type="submit" class="btn btn-info" name="submit"
+								value="submit">
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

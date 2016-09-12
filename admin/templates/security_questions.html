@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+
+<title>admin area</title>
+
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/coming-sssoon.css" rel="stylesheet" />
+
+<!--     Fonts     -->
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"
+	rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Grand+Hotel'
+	rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-transparent navbar-fixed-top"
+		role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="../home"> <i class="fa fa-home"></i> Home
+					</a></li> {if="$facebook"}
+					<li><a href="{$facebook}"> <i
+							class="fa fa-facebook-square"></i> Facebook
+					</a></li> {/else} {/if} {if="$twitter"}
+					<li><a href="{$twitter}"> <i class="fa fa-twitter"></i>
+							Twitter
+					</a></li> {/else} {/if}
+
+					<li><a href="../message.php"> <i class="fa fa-envelope-o"></i>
+							Leave a message
+					</a></li>
+					<li><a href="../admin"><i class="fa fa-sign-in"></i></a>
+				</ul>
+
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+	<div class="main" style="background-image: url('{$image_url}')">
+
+		<!--    Change the image source '/images/default.jpg' with your favourite image.     -->
+
+		<div class="cover black" data-color="black"></div>
+
+		<!--   You can change the black color for the filter with those colors: blue, green, red, orange       -->
+		<div class="container">
+			<div class="container">
+				<h1 class="logo cursive"></h1>
+				<!--  H1 can have 2 designs: "logo" and "logo cursive"           -->
+
+				<div class="container">
+					<!--  H1 can have 2 designs: "logo" and "logo cursive"           -->
+
+					<div class="content">
+						<div class="subscribe">
+							<div class="row">
+								<div class="col-md-4 col-md-offset-4 col-sm6-6 col-sm-offset-3 ">
+									<form class="form-inline" role="form" action="forget.php"
+										method="post">
+										<h3 style="alinge: center">please answer this Question</h3>
+
+										<div class="form-group">
+											<input type="text" name="answer1"
+												class="form-control transparent" placeholder="{$question1}"
+												required>
+										</div>
+										<div class="form-group">
+											<input type="text" name="answer2"
+												class="form-control transparent" placeholder="{$question2}"
+												required>
+										</div>
+										<hr>
+										<div class="form-group">
+											<input type="password" name="password"
+												class="form-control transparent" placeholder="new password"
+												required>
+										</div>
+										<div class="form-group">
+											<input type="password" name="re_password"
+												class="form-control transparent"
+												placeholder="type the password again" required>
+										</div>
+
+										<hr>
+										<div class="row">
+											<diV>
+
+												<input type="hidden" name="uid" value="{$uid}"
+													class="btn btn-success btn-fill"> <input
+													type="submit" name="reset" value="reset"
+													class="btn btn-success btn-fill">
+
+											</div>
+
+										</div>
+								</div>
+								</form>
+								{include="footer"}

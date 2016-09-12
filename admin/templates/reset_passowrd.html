@@ -1,0 +1,54 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- page start-->
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading"> Reset your Password</header>
+
+
+
+					<div class="panel-body">
+						<form action="reset_password.php" role="form" method="post">
+
+							<div class="form-group">
+								<label for="Title">Old Password</label> <input
+									class="form-control" for="Old Password"
+									placeholder="Old Password" type="password" name="old_password"
+									required>
+							</div>
+
+							<div class="form-group">
+								<label for="new_password">New Password</label> <input
+									class="form-control" for="new_password"
+									placeholder="new_password" type="password" name="new_password"
+									required>
+							</div>
+
+
+							<div class="form-group">
+								<label for="Title">Retype the password</label> <input class="form-control"
+									for="Title" placeholder="Title" type="password" name="re_password"
+									required>
+							</div>
+
+							<input type="hidden" name="uid" value="{$NOWUID}">
+							<input type="submit" class="btn btn-info" name="submit"
+								value="submit">
+						</form>
+					</div>
+
+
+
+
+				</section>
+			</div>
+		</div>
+	</section>
+</section>
+
+
+{include="footer"}

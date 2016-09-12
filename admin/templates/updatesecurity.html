@@ -1,0 +1,54 @@
+{include="header"}
+<!--main content start-->
+<section class="panel">
+	<header class="panel-heading"><strong>Update the security questions and the answer:</strong></header>
+	<hr>
+	<div class="panel-body">
+		<form action="updatesecurity.php" role="form" method="post">
+			<div class="form-group">
+				<label for="Title">Security Question 1</label> <input
+					class="form-control" for="Security Question"
+					placeholder="Security Question" name="q1" value="{$q1}" required>
+			</div>
+			<div class="form-group">
+				<label for="Title">Old Answer of q1</label> <input
+					class="form-control" for="answer" placeholder="anser" name="old_a1"
+					required>
+			</div>
+
+			<div class="form-group">
+				<label for="Title">New Answer of q1</label> <input
+					class="form-control" for="answer" placeholder="anser" name="a1"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="Title">Security Question 2</label> <input
+					class="form-control" for="Security Question" value="{$q2}"
+					placeholder="Security Question" name="q2" required>
+			</div>
+
+			<div class="form-group">
+				<label for="Title">Old Answer of q2</label> <input
+					class="form-control" for="answer" placeholder="anser" name="old_a2"
+					required>
+			</div>
+			<div class="form-group">
+				<label for="Title">New Answer of q2</label> <input
+					class="form-control" for="answer" placeholder="answer" name="a2"
+					required>
+			</div>
+
+			<div class="form-group">
+				<label for="Title">Password</label> <input type="password"
+					class="form-control" for="password" placeholder="password"
+					name="password" required>
+			</div>
+
+
+			<input type="hidden" name="uid" value="{$uid}"> <input
+				type="submit" class="btn btn-info" name="submit" value="submit">
+		</form>
+	</div>
+</section>
+
+{include="footer"}
