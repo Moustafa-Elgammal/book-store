@@ -4,6 +4,29 @@ jQuery(document).ready(function($){
         $(this).parent().hide();
     });
 
+
+    $('#remove_image').click(function(){
+        var file = $("#file_image").attr('src');
+        $.ajax({
+            url:'delete_file.php',
+            method:'post',
+            data:'file='+ file
+        }).done(function(data){
+            if(data){
+                console.log(data);
+                $("#loaded-img").hide();
+                $("#loaded-img").html("");
+                $("#MyUploadForm").show();
+                $("#output").html("");
+                $('#remove_image').hide();
+            }else{
+                console.log("bad code");
+            }
+        });
+
+    });
+
+
     /*--------------admin area queries -------------*/
 
     /**
@@ -37,6 +60,19 @@ jQuery(document).ready(function($){
     });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * uploader Ajax
      */
@@ -62,12 +98,14 @@ jQuery(document).ready(function($){
         $('#submit-btn').show(); //hide submit button
         $('#loading-img').hide(); //hide submit button
         $('#progressbox').delay( 1000 ).fadeOut(); //hide progress
-        alert(data);
         var info = JSON.parse(data);
         if(info.status) {
             $("#output").text(info.msg);
-            $("#loaded-img").html('<img src="' + info.file + '" atl="img AjaX">');
+            $("#loaded-img").html('<img id="file_image" width="100px" src="' + info.file + '" atl="img AjaX">');
             $("#loaded-img").show();
+            $("#remove_image").show();
+            $("#MyUploadForm").hide();
+
         }
         else
             $("#output").text(info.msg);
@@ -96,13 +134,7 @@ jQuery(document).ready(function($){
                 case 'image/gif':
                 case 'image/jpeg':
                 case 'image/pjpeg':
-                case 'text/plain':
-                case 'text/html':
-                case 'application/x-zip-compressed':
                 case 'application/pdf':
-                case 'application/msword':
-                case 'application/vnd.ms-excel':
-                case 'video/mp4':
                     break;
                 default:
                     $("#output").html("<b>"+ftype+"</b> Unsupported file type!");
