@@ -19,6 +19,22 @@
 					<header class="panel-heading"> Add New Category  </header>
 
 
+                    <div id="upload-wrapper">
+                        <div align="center">
+                            <h3>Ajax File Uploader</h3>
+                            <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                                <input name="FileInput" id="FileInput" type="file" />
+                                <input type="submit"  id="submit-btn" value="Upload" />
+                                <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+                            </form>
+
+                            <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+                            <div id="output"></div>
+                            <div id="loaded-img" style="display: none">
+                            </div>
+
+                        </div>
+                    </div>
 
 					<div class="panel-body">
 						<form id="add_cat_form" action = "addcategory.php"role="form" method="post">
