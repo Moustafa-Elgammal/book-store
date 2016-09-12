@@ -15,44 +15,47 @@
                     <p class="msg"></p>
                 </div>
 
-				<section class="panel">
-					<header class="panel-heading"> Add New Category  </header>
+                <section class="panel">
+                    <header class="panel-heading"> Add New Category</header>
 
+                    <h3>Category Cover</h3>
 
-                    <div id="upload-wrapper">
-                        <div align="center">
-                            <h3>Ajax File Uploader</h3>
-                            <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
-                                <input name="FileInput" id="FileInput" type="file" />
-                                <input type="submit"  id="submit-btn" value="Upload" />
-                                <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
-                            </form>
+                    <div id="loaded-img" style="display: none;">
 
-                            <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
-                            <div id="output"></div>
-                            <div id="loaded-img" style="display: none">
-                            </div>
+                    </div>
+                    <i id="remove_image" class="btn btn-danger" style="display: none;">x</i>
 
-                        </div>
+                    <div id="output"></div>
+
+                    <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                        <input class="form-control" name="FileInput" id="FileInput" type="file"/>
+                        <input style="margin:7px" type="submit" class="btn btn-info" id="submit-btn" value="Upload"/>
+                        <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+                    </form>
+
+                    <div id="progressbox" style="display: none">
+                        <div id="progressbar"></div>
+                        <div id="statustxt">0%</div>
                     </div>
 
-					<div class="panel-body">
-						<form id="add_cat_form" action = "addcategory.php"role="form" method="post">
-							<div class="form-group">
-								<label for="Category Name">Category Name</label>
-                                <input class="form-control" for="Category Name" placeholder="Category Name" name="title" required>
+
+                    <div class="panel-body">
+                        <form id="add_cat_form" action="addcategory.php" role="form" method="post">
+                            <div class="form-group">
+                                <label for="Category Name">Category Name</label>
+                                <input class="form-control" for="Category Name" placeholder="Category Name" name="title"
+                                       required>
                                 <label for="Category description">Category description</label>
-                                <textarea class="form-control" for="Category description" placeholder="Category description" name="content" required></textarea>
-							</div>
-							<input id="add_cat" type="submit" class="btn btn-info" name="submit" value="submit">
-						</form>
-					</div>
+                                <textarea class="form-control" for="Category description"
+                                          placeholder="Category description" name="content" required></textarea>
+                            </div>
+                            <input id="add_cat" type="submit" class="btn btn-info" name="submit" value="submit">
+                        </form>
+                    </div>
 
 
-
-
-				</section>
-			</div>
+                </section>
+            </div>
 		</div>
 	</section>
 </section>
