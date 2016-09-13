@@ -34,26 +34,33 @@ jQuery(document).ready(function($){
      */
 
     $("#add_cat").click(function(ev){
-
-        var data = $("#add_cat_form").serialize();
-        $.ajax({
-            url:'addcategory.php',
-            method:'post',
-            data:data
-        }).done(function(data){
-            var reply = JSON.parse(data);
-            if(reply.status){
-                $('.alert').removeClass('alert-danger');
-                $('.alert').addClass('alert-success');
-                $('.msg').html(reply.msg);
-                $('.alert').show();
-            }else{
+        if($("#ajaxed_photo").val().length) {
+            var data = $("#add_cat_form").serialize();
+            $.ajax({
+                url: 'addcategory.php',
+                method: 'post',
+                data: data
+            }).done(function (data) {
+                var reply = JSON.parse(data);
+                if (reply.status) {
+                    $('.alert').removeClass('alert-danger');
+                    $('.alert').addClass('alert-success');
+                    $('.msg').html(reply.msg);
+                    $('.alert').show();
+                } else {
+                    $('.alert').removeClass('alert-success');
+                    $('.alert').addClass('alert-danger');
+                    $('.msg').html(reply.msg);
+                    $('.alert').show();
+                }
+            });
+        }else{
             $('.alert').removeClass('alert-success');
-                $('.alert').addClass('alert-danger');
-                $('.msg').html(reply.msg);
-                $('.alert').show();
-            }
-        });
+            $('.alert').addClass('alert-danger');
+            $('.msg').html("please select a cover");
+            $('.alert').show();
+
+        }
 
         ev.preventDefault();
 
@@ -102,6 +109,7 @@ jQuery(document).ready(function($){
         if(info.status) {
             $("#output").text(info.msg);
             $("#loaded-img").html('<img id="file_image" width="100px" src="' + info.file + '" atl="img AjaX">');
+            $("#ajaxed_photo").val(info.file);
             $("#loaded-img").show();
             $("#remove_image").show();
             $("#MyUploadForm").hide();
