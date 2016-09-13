@@ -42,8 +42,9 @@
                     <div class="panel-body">
                         <form id="add_cat_form" action="addcategory.php" role="form" method="post">
                             <div class="form-group">
+                                <input type="hidden" name="photo"  id="ajaxed_photo">
                                 <label for="Category Name">Category Name</label>
-                                <input class="form-control" for="Category Name" placeholder="Category Name" name="title"
+                                <input type="text" class="form-control" for="Category Name" placeholder="Category Name" name="title"
                                        required>
                                 <label for="Category description">Category description</label>
                                 <textarea class="form-control" for="Category description"
