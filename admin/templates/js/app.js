@@ -11,17 +11,12 @@ jQuery(document).ready(function($){
             url:'delete_file.php',
             method:'post',
             data:'file='+ file
-        }).done(function(data){
-            if(data){
-                console.log(data);
-                $("#loaded-img").hide();
-                $("#loaded-img").html("");
-                $("#MyUploadForm").show();
-                $("#output").html("");
-                $('#remove_image').hide();
-            }else{
-                console.log("bad code");
-            }
+        }).done(function(){
+            $("#loaded-img").hide();
+            $("#loaded-img").html("");
+            $("#MyUploadForm").show();
+            $("#output").html("");
+            $("#remove_image").hide();
         });
 
     });
@@ -47,6 +42,11 @@ jQuery(document).ready(function($){
                     $('.alert').addClass('alert-success');
                     $('.msg').html(reply.msg);
                     $('.alert').show();
+                    $("input[type=text]").val("");
+                    $("textarea").val("");
+                    $("#loaded-img").html("");
+                    $("#MyUploadForm").show();
+                    $("#remove_image").hide();
                 } else {
                     $('.alert').removeClass('alert-success');
                     $('.alert').addClass('alert-danger');
@@ -71,15 +71,6 @@ jQuery(document).ready(function($){
 
 
 
-
-
-
-
-
-
-
-
-
     /**
      * uploader Ajax
      */
@@ -97,8 +88,6 @@ jQuery(document).ready(function($){
         // always return false to prevent standard browser submit and page navigation
         return false;
     });
-
-
 //function after succesful file upload (when server response)
     function afterSuccess(data)
     {
@@ -180,7 +169,6 @@ jQuery(document).ready(function($){
             $('#statustxt').css('color','#000'); //change status text to white after 50%
         }
     }
-
 //function to format bites bit.ly/19yoIPO
     function bytesToSize(bytes) {
         var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -188,7 +176,4 @@ jQuery(document).ready(function($){
         var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
-
-
-
 });
