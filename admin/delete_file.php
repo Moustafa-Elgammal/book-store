@@ -10,7 +10,7 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
 if(isset($_POST['file'])) {
     $dir = explode('/',$_POST['file']);
     if($dir[1] == 'uploads')
-        die(unlink($_POST['file']));
+        die(1/*unlink($_POST['file'])*/);
     else
         die(0);
 }
