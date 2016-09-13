@@ -66,11 +66,6 @@ jQuery(document).ready(function($){
 
     });
 
-
-
-
-
-
     /**
      * uploader Ajax
      */
@@ -176,4 +171,22 @@ jQuery(document).ready(function($){
         var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
+
+    $("#category-delete").click(function(){
+        var id = $(this).attr('id-data');
+
+        $.ajax({
+            url:'deleteCategory.php',
+            method:'post',
+            data:'id='+id
+        }).done(function(data){
+            data = JSON.parse(data);
+            if(data.status){
+                $('#cat-'+id).remove();
+            }else{
+                alert("Refresh this page");
+            }
+        });
+    });
+
 });
