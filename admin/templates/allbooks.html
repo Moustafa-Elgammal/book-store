@@ -21,20 +21,20 @@
                     <tbody>
                     {loop="books"}
 
-                    <tr id="cat-{$value.category_id}">
+                    <tr id="book-{$value.category_id}">
                         <td>{$value.book_id}</td>
                         <td class="hidden-phone">{$value.book_title}</td>
                         <td class="hidden-phone">{$value.name}</td>
                         <td class="hidden-phone">{$value.category_title}</td>
                         <td>
-                            <a id="book-delete" id-data="{$value.book_id}" class="btn btn-danger btn-xs">delete</i></a>
+                            <a id="book-delete" id-data="{$value.book_id}" class="btn btn-danger btn-xs book-delete">delete</i></a>
                             <a  class="btn btn-info btn-xs" href="../book.php">show</i></a>
                             <a  class="btn btn-info btn-xs" href="updatebook.php?id={$value.book_id}">update</i></a>
                         </td>
                     </tr>
 
                     {else}
-                    <h1>No Categories</h1>
+                    <h1>No Books</h1>
                     {/loop}
                     </tbody>
                 </table>

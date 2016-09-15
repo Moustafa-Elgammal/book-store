@@ -172,7 +172,10 @@ jQuery(document).ready(function($){
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
 
-    $("#category-delete").click(function(){
+    /**
+     * delete category request
+     */
+    $(".category-delete").click(function(){
         var id = $(this).attr('id-data');
 
         $.ajax({
@@ -183,6 +186,27 @@ jQuery(document).ready(function($){
             data = JSON.parse(data);
             if(data.status){
                 $('#cat-'+id).remove();
+            }else{
+                alert("Refresh this page");
+            }
+        });
+    });
+
+
+    /**
+     * delete book request
+     */
+    $(".book-delete").click(function(){
+        var id = $(this).attr('id-data');
+
+        $.ajax({
+            url:'deletebook.php',
+            method:'post',
+            data:'id='+id
+        }).done(function(data){
+            data = JSON.parse(data);
+            if(data.status){
+                $('#book-'+id).remove();
             }else{
                 alert("Refresh this page");
             }
