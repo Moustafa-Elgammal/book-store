@@ -25,11 +25,11 @@ require_once (CORE . 'system.class.php');
 require_once (CORE . 'transcript.php');
 require_once (LIBS . 'uploader.php');
 require_once (INC . 'general.php');
+
 // strore object of RAINTPL CLASS
 System::Store ( 'tpl', new RainTPL () );
 
 // strore object of DB CLASS
-
 require_once (CORE . 'pdo.php');
 System::Store ( 'db', new MyPDO() );
 

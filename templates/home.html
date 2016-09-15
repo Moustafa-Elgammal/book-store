@@ -1,0 +1,25 @@
+
+<div id="images">
+    <div class="title">
+        <h2>All Books</h2>
+    </div>
+    <br>
+    <div class="row">
+        {loop="books"}
+        <div class="col-sm-4">
+            <h4>{$value.book_title}</h4>
+            <p class="text-primary">
+                {function="mb_substr($value.book_content,0,80)"}...
+            </p>
+            <div class="text-center">
+                <button class="btn btn-info btn-sm view-more">View More</button>
+                <button class="btn btn-success btn-sm download">Download</button>
+            </div>
+
+        </div>
+        {/loop}
+    </div>
+    <div class="row">
+
+    </div>
+</div>
