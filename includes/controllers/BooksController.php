@@ -123,4 +123,70 @@ class BooksControllers {
         }
     }
 
+    public function UpdateBook(){
+        $data= array(); //init
+
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+
+            //check title
+            if(!isset($_POST['title'])||  strlen($_POST['title']) < 4){
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg"    => "The title must be more than 4 letters"
+                )));
+            }
+
+            //check content
+            if(!isset($_POST['content'])||  strlen($_POST['content']) < 15){
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg"    => "The description must be more than 15 letters"
+                )));
+            }
+            //check content
+            if(!isset($_POST['category'])||  (int)$_POST['category'] <= 0){
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg"    => "Please select valid category"
+                )));
+            }
+
+            if(isset($_POST['photo']) && strlen($_POST['photo']) < 5 && file_exists($_POST['photo'])){
+                $data['book_file'] = $_POST['photo'];
+            }
+
+            $data['book_title'] = $_POST['title'];
+            $data['book_content'] = $_POST['content'];
+            $data['book_category_id'] = (int)$_POST['category'];
+
+            $id = (int)$_POST['id'];
+            $x = $this->booksModel->UpdateBook($id,$data);
+            if ($x)
+                die(json_encode(array(
+                    'status' => 1,
+                    "msg"    => "Book Update successfully"
+                )));
+
+            else
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg"    => "No thing changed"
+                )));
+
+        }elseif(isset($_GET['id'])&&(int)$_GET['id']){
+            $id = (int)$_GET['id'];
+            $book = $this->booksModel->GetById($id);
+          //  die(var_dump($book));
+            $categories = array(); // for the cats.
+            System::Get('db')->Execute("SELECT `category_id`,`category_title` FROM `book_store_categories` ORDER BY `category_id` ASC");
+            if(System::Get('db')->AffectedRows())
+                $categories = System::Get('db')->GetRows();
+            System::Get('tpl')->assign('categories',$categories);
+            System::Get('tpl')->assign($book);
+            System::Get('tpl')->draw('updatebook');
+
+        }
+
+    }
+
 } 
