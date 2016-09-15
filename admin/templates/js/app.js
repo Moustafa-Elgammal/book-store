@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
         if($("#ajaxed_photo").val().length) {
             var data = $("#add_cat_form").serialize();
             $.ajax({
-                url: 'addcategory.php',
+                url: $('#add_cat_form').attr('action'),
                 method: 'post',
                 data: data
             }).done(function (data) {

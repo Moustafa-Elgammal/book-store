@@ -37,6 +37,7 @@ class CategoriesController {
            }
 
            $data = array(
+               'category_photo' => $_POST['photo'],
                'category_title' => $_POST['title'],
                'category_content' => $_POST['content'],
                'category_user_id' => $_SESSION['uid']
@@ -62,6 +63,40 @@ class CategoriesController {
 
     }
 
+    /**
+     * get all categories
+     */
+    public function AllCategories(){
+        $cats = $this->CatModel->GetAllCats();
+        System::Get('tpl')->assign('categories',$cats);
+        System::Get('tpl')->draw('allCats');
+    }
 
+    /**
+     * delete category
+     */
+    public function deleteCategory(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+
+            if(!isset($_POST['id']) || !(int)$_POST['id'] )
+                die(json_encode(array(
+                    'status' => 0
+                )));
+            $id = (int)$_POST['id'];
+            $x = $this->CatModel->DeleteCategory($id);
+            if($x)
+                die(json_encode(array(
+                    'status' => 1
+                )));
+            else
+                die(json_encode(array(
+                    'status' => 1
+                )));
+        }else{
+            die(json_encode(array(
+                'status' => 0,
+            )));
+        }
+    }
 
 } 

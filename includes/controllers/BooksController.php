@@ -44,7 +44,7 @@ class BooksControllers {
                 )));
             }
 
-            if(!isset($_POST['pdf'])||  !file_exists($_POST['pdf'])){
+            if(!isset($_POST['photo']) || strlen($_POST['photo']) < 5|| !file_exists($_POST['photo'])){
                 die(json_encode(array(
                     'status' => 0,
                     "msg"    => "Please upload valid file"
@@ -54,7 +54,7 @@ class BooksControllers {
 
 
             $data = array(
-                'book_file' => $_POST['pdf'],
+                'book_file' => $_POST['photo'],
                 'book_title' => $_POST['title'],
                 'book_content' => $_POST['content'],
                 'book_category_id' => $_POST['category'],
@@ -77,6 +77,11 @@ class BooksControllers {
                 )));
 
         }else{
+            $categories = array(); // for the cats.
+            System::Get('db')->Execute("SELECT `category_id`,`category_title` FROM `book_store_categories` ORDER BY `category_id` ASC");
+            if(System::Get('db')->AffectedRows())
+                $categories = System::Get('db')->GetRows();
+            System::Get('tpl')->assign('categories',$categories);
             System::Get('tpl')->draw('addbook');
         }
 
