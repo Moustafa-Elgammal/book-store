@@ -91,8 +91,8 @@ class BooksControllers {
      * get all books
      */
     public function AllBooks(){
-        $cats = $this->booksModel->GetAllBooks();
-        System::Get('tpl')->assign('categories',$cats);
+        $books = $this->booksModel->GetAllBooks();
+        System::Get('tpl')->assign('books',$books);
         System::Get('tpl')->draw('allbooks');
     }
 
