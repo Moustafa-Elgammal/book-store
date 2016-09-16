@@ -33,5 +33,10 @@ System::Store ( 'tpl', new RainTPL () );
 require_once (CORE . 'pdo.php');
 System::Store ( 'db', new MyPDO() );
 
-
-
+System::Get('tpl')->assign('NOWUID','');
+if(!empty($_SESSION)) {
+    $NOWUSER = $_SESSION;
+    System::Get('tpl')->assign('NOWUSERNAME', $NOWUSER['username']);
+    System::Get('tpl')->assign('NOWNAME', $NOWUSER['name']);
+    System::Get('tpl')->assign('NOWUID', $NOWUSER['uid']);
+}

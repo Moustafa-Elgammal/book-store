@@ -13,4 +13,27 @@
           Download
         </button>
     </div>
+    {if="$NOWUID"}
+    <div class="col-md-12">
+        <form id = "review-form" class="form-horizontal" action="review.php">
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="number" max="10" min="1" class="form-control" name="number" id="name" placeholder="You Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea class="form-control" name="content" id="username" placeholder="Review Description"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                        <button type="submit" class="form-control" id="review"> Review</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    {else}
+    <a class="btn btn-info" href="admin/login.php">login</a>
+    {/if}
 </div>
