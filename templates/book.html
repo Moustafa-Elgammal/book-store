@@ -1,0 +1,16 @@
+<div class="row" xmlns="http://www.w3.org/1999/html">
+    <div class="col-md-12">
+        <h2 class="text-center title">{$book_title}</h2>
+        <p class="text-primary text-center"><span>By: </span>{$name}</p>
+        <h4 class="text-center description">
+            {$book_content}
+        </h4>
+        <object data="pdfFiles/interfaces.pdf" type="application/pdf" >
+            <embed src="{$book_file}" style="width:100%;height:500px" type="application/pdf">&nbsp; </embed>
+        </object>
+
+        <button class="btn btn-primary download" file-data="{$book_file}">
+          Download
+        </button>
+    </div>
+</div>

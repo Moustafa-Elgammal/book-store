@@ -12,14 +12,12 @@
                 {function="mb_substr($value.book_content,0,80)"}...
             </p>
             <div class="text-center">
-                <button class="btn btn-info btn-sm view-more">View More</button>
-                <button class="btn btn-success btn-sm download">Download</button>
+                <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
+                <button class="btn btn-success btn-sm download" file-data="{$value.book_file}">Download</button>
             </div>
 
         </div>
         {/loop}
     </div>
-    <div class="row">
 
-    </div>
 </div>
