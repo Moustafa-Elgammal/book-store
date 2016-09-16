@@ -165,4 +165,14 @@ class UsersModel {
 	public function GetUserInfo() {
 		return $this->UserInfo;
 	}
+
+    public function usernameExist($username){
+        $x = $this->Get("WHERE `username` = '$username'");
+        return $x? 1:0;
+    }
+
+    public function emailExist($email){
+        $x = $this->Get("WHERE `email`='$email'");
+        return $x? 1:0;
+    }
 }
