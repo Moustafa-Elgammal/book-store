@@ -159,9 +159,6 @@ $cache_id = null; // identify only one cache
 	 * @return string
 	 */
 	function draw($tpl_name, $return_string = false) {
-		if (!defined('HEXA') || HEXA != ' Fahimco ')
-			die ();
-		
 		try {
 			// compile the template if necessary and set the template filepath
 			$this->check_template ( $tpl_name );

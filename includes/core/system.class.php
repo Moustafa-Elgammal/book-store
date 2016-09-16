@@ -56,7 +56,7 @@ class System {
 	}
 	
 	public static function SQL_SAVE($query){
-		$variable = mysqli_real_escape_string(self::Get('db')->connection(), trim($query));
+		$variable =$query;
 		return $variable; 
 	}
 }

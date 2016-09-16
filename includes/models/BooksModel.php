@@ -16,7 +16,8 @@ class BooksModel {
     {
         $books = array(); //init
 
-        $query = sprintf("SELECT * FROM %s %s", $this->table_name, $extra); // query
+        $query = sprintf("SELECT `$this->table_name`.*,users.uid,users.name,book_store_categories.category_id,book_store_categories.category_title FROM `$this->table_name` LEFT JOIN book_store_categories ON book_category_id = category_id LEFT JOIN users ON book_author_id = users.uid
+                           %s", $extra); // query
         //echo $query;
         System::Get('db')->Execute($query); //execute the query
         if (System::Get('db')->AffectedRows()) { //

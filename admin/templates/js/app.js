@@ -57,7 +57,7 @@ jQuery(document).ready(function($){
         }else{
             $('.alert').removeClass('alert-success');
             $('.alert').addClass('alert-danger');
-            $('.msg').html("please select a cover");
+            $('.msg').html("please select upload file");
             $('.alert').show();
 
         }

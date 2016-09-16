@@ -1,11 +1,10 @@
 <?php
 
 include_once"globals.php";
+require_once(CONTROLLERS.'VisitorsController.php');
+require_once(MODELS.'BooksModel.php');
 
+$booksmodel = new BooksModel();
+$controller = new VisitorsController($booksmodel);
 
-require_once(MODELS.'/BooksModel.php');
-
-
-$books = new BooksModel();
-
-var_dump($books->GetById(1));
+$controller->drawHome();
