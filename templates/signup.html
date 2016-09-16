@@ -1,35 +1,45 @@
 <h1 class="text-center">Sign Up</h1>
 
-<form class="form-horizontal">
+<form id = "sign-up-form" class="form-horizontal" action="signup.php">
     <div class="box-body">
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="username">
+                <input type="text" class="form-control" name="name" id="name" placeholder="You Name">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="text" class="form-control" name="name" id="inputEmail3" placeholder="You Name">
+                <input type="text" class="form-control" name="username" id="username" placeholder="username">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-12">
-                <input type="password" class="form-control" name="repassword" id="inputPassword3" placeholder="Password">
+                <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Password">
             </div>
         </div>
     </div><!-- /.box-body -->
     <div class="box-footer">
-        <button type="submit" class="btn btn-default pull-right">Cancel</button>
-        <button type="submit" class="btn btn-info">Sign in</button>
+        <button id="sign-up" class="btn btn-primary">Sign Up</button>
+        <button id="sign-cancel" class="btn btn-default pull-right">Cancel</button>
     </div><!-- /.box-footer -->
 </form>
+
+<div class="alert alert-block fade in" style="display: none">
+    <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="icon-remove">x</i>
+    </button>
+    <h4>
+        <p id="msg"></p>
+    </h4>
+
+</div>
