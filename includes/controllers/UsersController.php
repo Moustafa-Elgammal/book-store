@@ -421,6 +421,19 @@ class UsersController
         }
     }
 
+    public function SignUp(){
+        if(isset($_POST['id']))
+            if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
+            } else {
+
+
+            }
+        else{
+            System::Get('tpl')->draw('header');
+            System::Get('tpl')->draw('signup');
+            System::Get('tpl')->draw('footer');
+        }
+    }
 
 }
