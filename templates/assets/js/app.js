@@ -105,4 +105,6 @@ jQuery(document).ready(function($){
         });
         ev.preventDefault();
     });
+
+    $('.loader_lg_page').fadeOut(5000);
 });

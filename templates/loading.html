@@ -1,0 +1,167 @@
+<style>
+    .loader_lg_page {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        z-index: 8999;
+    }
+
+    .lightbox-overlay {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        background: #f9f9f9;
+    }
+
+    .lightbox-container {
+        width: 100%;
+        height:100%;
+        padding-bottom: 40px;
+        margin-left: -340px;
+        margin-top: -225px;
+    }
+    @-webkit-keyframes rotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes rotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes rotate2 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            border-top-color: rgba(0, 0, 255, 0.5);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    @keyframes rotate2 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            border-top-color: rgba(0, 0, 255, 0.5);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border-top-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+
+    .loader1 div, .loader2 div, .loader3 div, .loader4 div {
+        height: 100%;
+    }
+
+    /* loader 1 */
+    .loader1, .loader1 div {
+        border-radius: 50%;
+        padding: 8px;
+        border: 2px solid transparent;
+        -webkit-animation: rotate linear 3.5s infinite;
+        animation: rotate linear 3.5s infinite;
+        border-top-color: rgba(0, 0, 0, 0.5);
+        border-bottom-color: rgba(0, 0, 255, 0.5);
+    }
+
+    /*loader 2  */
+    .loader2, .loader2 div {
+        border-radius: 50%;
+        padding: 8px;
+        border: 2px solid transparent;
+        -webkit-animation: rotate linear 3.5s infinite;
+        animation: rotate linear 3.5s infinite;
+        border-top-color: rgba(0, 0, 255, 0.5);
+        border-left-color: rgba(0, 0, 0, 0.5);
+        border-right-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /*loader 3  */
+    .loader3, .loader3 div {
+        border-radius: 50%;
+        padding: 8px;
+        border: 2px solid transparent;
+        -webkit-animation: rotate linear 3.5s infinite;
+        animation: rotate linear 3.5s infinite;
+        border-top-color: rgba(0, 0, 0, 0.5);
+        border-left-color: rgba(0, 0, 255, 0.5);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.38, 0.21, 0.88);
+        animation-timing-function: cubic-bezier(0.55, 0.38, 0.21, 0.88);
+        -webkit-animation-duration: 3s;
+        animation-duration: 3s;
+    }
+
+</style>
+<script type="text/javascript">
+    jQuery('body').css('overflow-y','hidden');
+
+</script>
+<div style="display: block;" class="loader_lg_page">
+    <div class="lightbox-overlay" style="margin: 0 auto;padding-top:19%;">
+
+        <div class='loader3 text-center'  style="width: 250px;height: 250px;margin: 0 auto;">
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
