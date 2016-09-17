@@ -3,8 +3,22 @@
  */
 jQuery(document).ready(function($){
     $('.download').click(function(){
+        var bookID = $(this).attr('data-id');
         var file = $(this).attr('file-data');
-        window.location.href = file;
+        $.ajax({
+            url:'download.php',
+            method:'post',
+            data:'book_id='+bookID
+        }).done(function(data){
+            var info = JSON.parse(data);
+            if(info.status){
+                window.open(file);
+            }else{
+                alert(info.msg);
+            }
+        });
+
+
     });
 
     //open view the book content page
@@ -33,11 +47,11 @@ jQuery(document).ready(function($){
         }).done(function (data){
             var info=JSON.parse(data);
             if(info.status){
-                $('#msg').html(info.msg);
+                $('#msg').html(info.msg+'you can log in now <a style="color:#7b1fa2 " href="admin/login.php">Log In</a>');
                 $('.alert').addClass('alert-success');
                 $('.alert').removeClass('alert-danger');
                 $('.alert').show();
-                $('input').val('');
+                $('input').val('').delay(5000);
             }else{
                 $('#msg').html(info.msg);
                 $('.alert').addClass('alert-danger');
@@ -49,5 +63,23 @@ jQuery(document).ready(function($){
 
         ev.preventDefault();
     });
+
+    $('.want-read').click(function(){
+        var bookID = $(this).attr('data-id');
+        $.ajax({
+            url:'wanttoread.php',
+            method:'post',
+            data:'book_id='+bookID
+        }).done(function(data){
+            var info = JSON.parse(data);
+            if(info.status){
+                alert(info.msg);
+            }else{
+                alert(info.msg);
+            }
+        });
+    });
+
+
 
 });
