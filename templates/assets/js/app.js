@@ -95,10 +95,10 @@ jQuery(document).ready(function($){
             method:'post',
             data:data
         }).done(function(data){
-            alert(data);
             var info = JSON.parse(data);
             if(info.status){
                 alert(info.msg);
+                window.location.reload();
             }else{
                 alert(info.msg);
             }
