@@ -27,7 +27,7 @@ class UsersMetaController {
                     'status' => 0,
                     'msg' => 'please refresh this page'
                 )));
-            if(!$this->MetaModel->CheckExist((int)$_POST['book_id'],(int)$_SESSION['uid'],WANT_TO_READ))
+            if($this->MetaModel->CheckExist((int)$_POST['book_id'],(int)$_SESSION['uid'],WANT_TO_READ))
                 die(json_encode(array(
                     'status' => 0,
                     'msg' => 'You have read this book before'
@@ -70,7 +70,7 @@ class UsersMetaController {
                     'status' => 0,
                     'msg' => 'please refresh this page'
                 )));
-            if(!$this->MetaModel->CheckExist((int)$_POST['book_id'],(int)$_SESSION['uid'],DOWNLOADED))
+            if($this->MetaModel->CheckExist((int)$_POST['book_id'],(int)$_SESSION['uid'],DOWNLOADED))
                 die(json_encode(array(
                     'status' => 0,
                     'msg' => 'You have downloaded this book before'

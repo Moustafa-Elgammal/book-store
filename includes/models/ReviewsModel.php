@@ -16,7 +16,7 @@ class ReviewsModel {
     {
         $books = array(); //init
 
-        $query = sprintf("SELECT * FROM %s %s", $this->table_name, $extra); // query
+        $query = sprintf("SELECT book_store_books_reviews.*,users.uid,users.name,book_store_books.book_id,book_store_books.book_title FROM `%s` LEFT JOIN users on review_user_id = users.uid LEFT JOIN book_store_books ON review_book_id = book_store_books.book_id  %s", $this->table_name, $extra); // query
         //echo $query;
         System::Get('db')->Execute($query); //execute the query
         if (System::Get('db')->AffectedRows()) { //
@@ -91,10 +91,9 @@ class ReviewsModel {
     }
 
     public function ReviewExist($book,$user){
-        $query = sprintf('WHERE `review_book_id`=%d AND `review_book_id`=%d',$book,$user);
+        $query = sprintf('WHERE `review_book_id`= %d AND `review_user_id`= %d ',$book,$user);
         $x = $this->GetAllReviews($query);
-
-        return !empty($x)?true:false;
+        return count($x)?1:0;
     }
 
 
