@@ -97,14 +97,14 @@ class UsersMetaModel {
         $id = (int) $id; //init
         System::Get('db')->Update($this->table_name,$data,"WHERE meta_id = '$id'"); //update
         $x = System::Get('db')->AffectedRows(); //check
-        return $x? true:false;  //confirm
+        return count($x)?1:0;  //confirm
     }
 
     public function CheckExist($book,$user,$type){
         $query = sprintf('WHERE `meta_book_id`=%d AND`meta_user_id`=%d
                          AND `meta_type` = %d',$book,$user,$type);
         $x = $this->GetAllMeta($query);
-        return empty($x)? true:false;  //confirm
+        return count($x)?1:0;  //confirm
     }
 
 
