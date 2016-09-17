@@ -1,25 +1,58 @@
-<div class="row" xmlns="http://www.w3.org/1999/html">
+<div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="col-md-12">
         <h2 class="text-center title">{$book_title}</h2>
         <p class="text-primary text-center"><span>By: </span>{$name}</p>
         <h4 class="text-center description">
             {$book_content}
         </h4>
+        {if="$NOWUID"}
         <object data="pdfFiles/interfaces.pdf" type="application/pdf" >
             <embed src="{$book_file}" style="width:100%;height:500px" type="application/pdf">&nbsp; </embed>
         </object>
 
-        <button class="btn btn-primary download" file-data="{$book_file}">
+        <button class="btn btn-primary download" data-id="{$book_id}" file-data="{$book_file}">
           Download
         </button>
+        {else}
+
+        <p class="text-primary"><hr>
+            <a href="signup.php" class="text-info">Sign Up</a> or <a class="text-info"href="admin/login.php">login</a>
+            To show the file document and download options.
+        {/if}
     </div>
+    <!-- reviews -->
+    <div class="row">
+        <div class="col-lg-10 col-lg-push-1">
+            <h4 class="col-lg-12 col-sm-pull-1">All Reviews</h4>
+            {loop="reviews"}
+            <div class="row">
+               <strong>{$value.name}, </strong>
+                {if="$value.review_percent>1"}
+                {$value.review_percent} Stars
+                {else}
+                    star
+                {/if},
+                <sd class="text-success">{$value.review_date}</sd>
+                {if="strlen($value.review_content)"}
+                <p class="text-primary">{$value.review_content}</p>
+                {else}
+                <p class="text-danger">There no comment in this review</p>
+                {/if}
+                <hr/>
+            </div>
+            {else}
+            There is no reviews
+            {/loop}
+        </div>
+    </div>
+
     {if="$NOWUID"}
     <div class="col-md-12">
         <form id = "review-form" class="form-horizontal" action="review.php">
             <div class="box-body">
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <input type="number" max="10" min="1" class="form-control" name="number" id="name" placeholder="You Name">
+                        <input type="number" max="10" min="1" class="form-control" name="number" id="name" placeholder="Your review on scale from 1 to 10">
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,13 +60,13 @@
                         <textarea class="form-control" name="content" id="username" placeholder="Review Description"></textarea>
                     </div>
                 </div>
+                <input type="hidden" name="book_id" value="{$book_id}">
+                <input type="hidden" name="uid" value="{$NOWUID}">
                 <div class="col-sm-12">
                         <button type="submit" class="form-control" id="review"> Review</button>
                     </div>
                 </div>
             </form>
     </div>
-    {else}
-    <a class="btn btn-info" href="admin/login.php">login</a>
     {/if}
 </div>

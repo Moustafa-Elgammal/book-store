@@ -64,6 +64,9 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    /**
+     * add book for user in interested
+     */
     $('.want-read').click(function(){
         var bookID = $(this).attr('data-id');
         $.ajax({
@@ -80,6 +83,26 @@ jQuery(document).ready(function($){
         });
     });
 
+    /**
+     * add review
+     */
 
+    $('#review').click(function(ev){
+        var data = $('#review-form').serialize();
 
+        $.ajax({
+            url:'review.php',
+            method:'post',
+            data:data
+        }).done(function(data){
+            alert(data);
+            var info = JSON.parse(data);
+            if(info.status){
+                alert(info.msg);
+            }else{
+                alert(info.msg);
+            }
+        });
+        ev.preventDefault();
+    });
 });
