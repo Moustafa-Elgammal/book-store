@@ -90,6 +90,12 @@ class ReviewsModel {
         return $x? true:false;  //confirm
     }
 
+    public function ReviewExist($book,$user){
+        $query = sprintf('WHERE `review_book_id`=%d AND `review_book_id`=%d',$book,$user);
+        $x = $this->GetAllReviews($query);
+
+        return !empty($x)?true:false;
+    }
 
 
 
