@@ -26,6 +26,12 @@ class ReviewsController {
                     'status' => 0,
                     'msg' => 'Please Refresh this page'
                 )));
+            if ($this->reviewsModel->ReviewExist((int)$_POST['book_id'],(int)$_SESSION['uid']))
+                die(json_encode(array(
+                    'status' => 0,
+                    'msg' => 'You have been review this book before'
+                )));
+
             if (!isset($_POST['number']) || (int)$_POST['number'] < 1 || (int)$_POST['number']  >= 10 )
                 die(json_encode(array(
                     'status' => 0,
