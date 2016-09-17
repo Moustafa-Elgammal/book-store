@@ -10,10 +10,4 @@ System::Get('tpl')->assign('NOWUID',$NOWUSER['uid']);
  * direct to get from the data base
  */
 
-System::Get('db')->Execute("SELECT * FROM `messages` ORDER BY `messages`.`mid` DESC");
-if(System::Get('db')->AffectedRows() > 0)
-{
-	$recent_messages=System::Get('db')->GetRows();
-	System::Get('tpl')->assign('recent_messages',$recent_messages);
-}
 
