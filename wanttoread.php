@@ -7,4 +7,4 @@ require_once(MODELS.'UsersMetaModel.php');
 $booksmodel = new UsersMetaModel();
 $controller = new UsersMetaController($booksmodel);
 
-$controller->addReview();
+$controller->WantToRead();
