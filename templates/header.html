@@ -62,7 +62,13 @@
                         <i class="material-icons"></i> logout
                     </a>
                 </li>
-
+                {if="$NOWADMIN==1"}
+                <li>
+                    <a href="admin">
+                        <i class="material-icons"></i> Ademin Area
+                    </a>
+                </li>
+                {/if}
                {else}
                 <li>
                     <a href="admin/login.php">

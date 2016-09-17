@@ -39,4 +39,6 @@ if(!empty($_SESSION)) {
     System::Get('tpl')->assign('NOWUSERNAME', $NOWUSER['username']);
     System::Get('tpl')->assign('NOWNAME', $NOWUSER['name']);
     System::Get('tpl')->assign('NOWUID', $NOWUSER['uid']);
+    System::Get('tpl')->assign('NOWADMIN', $_SESSION ['is_admin']);
+
 }
