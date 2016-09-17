@@ -99,4 +99,19 @@ class CategoriesController {
         }
     }
 
+    public function GetCategoryInfo(BooksModel $bookModel){
+        if(isset($_GET['id']) && (int)$_GET['id']){
+            $id = (int)$_GET['id'];
+            $category = $this->CatModel->GetById($id);
+            !empty($category)?System::Get('tpl')->assign($category):die('404');
+            $books = $bookModel->GetByCatId($id);
+            System::Get('tpl')->assign('books',$books);
+            System::Get('tpl')->draw('header');
+            System::Get('tpl')->draw('category');
+            System::Get('tpl')->draw('footer');
+        }else{
+            echo '404';
+        }
+    }
+
 } 

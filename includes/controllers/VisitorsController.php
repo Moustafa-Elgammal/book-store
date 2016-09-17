@@ -23,7 +23,7 @@ class VisitorsController {
             $reviews = array();
 
             $book = $this->booksModel->GetById($id);
-            System::Get('db')->Execute("SELECT book_store_books_reviews.*,users.uid,users.name,book_store_books.book_id,book_store_books.book_title FROM `book_store_books_reviews` LEFT JOIN users on review_user_id = users.uid LEFT JOIN book_store_books ON review_book_id = book_store_books.book_id where review_book_id = $id");
+            System::Get('db')->Execute("SELECT book_store_books_reviews.*,users.uid,users.name,book_store_books.book_id,book_store_books.book_title FROM `book_store_books_reviews` LEFT JOIN users on review_user_id = users.uid LEFT JOIN book_store_books ON review_book_id = book_store_books.book_id   where review_book_id = $id  ORDER BY `book_store_books_reviews`.`review_id` DESC");
             $reviews = System::Get('db')->AffectedRows()?System::Get('db')->GetRows():[];
 
             if(!empty($book)){

@@ -68,6 +68,16 @@ class BooksModel {
         return $x? true:false;  //confirm
     }
 
+    /**
+     * this method for return an array with all book in the same category
+     * @param $id category id
+     * @return array of the books or empty of nothing
+     */
+    public function GetByCatId($id){
+        $id = (int)$id;
+        $book = $this->GetAllBooks("WHERE book_category_id = $id");
+        return !empty($book)? $book: array();
+    }
 
 
 }
