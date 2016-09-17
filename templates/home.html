@@ -7,13 +7,24 @@
     <div class="row">
         {loop="books"}
         <div class="col-sm-4">
-            <h4>{$value.book_title}</h4>
+           <p style="font-weight: bold">{$value.book_title}, <span class="text-info" style="font-weight: 500">{$value.category_title}</span></p>
             <p class="text-primary">
                 {function="mb_substr($value.book_content,0,80)"}...
             </p>
             <div class="text-center">
+                {if="$NOWUID"}
+                <button class="btn btn-info btn-sm want-read"  data-id="{$value.book_id}">Want to read</button>
+                <button class="btn btn-success btn-sm download" data-id="{$value.book_id}" file-data="{$value.book_file}">Download</button>
                 <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
-                <button class="btn btn-success btn-sm download" file-data="{$value.book_file}">Download</button>
+                {else}
+
+
+                <p class="text-primary">
+                    <a href="signup.php" class="text-info">Sign Up</a> or <a class="text-info"href="admin/login.php">login</a>
+                    for mor options. <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button></p>
+
+                {/if}
+
             </div>
 
         </div>
