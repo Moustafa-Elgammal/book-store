@@ -87,6 +87,12 @@ class UsersMetaModel {
         return $x? true:false;  //confirm
     }
 
+    /**
+     * update a meta
+     * @param $id
+     * @param $data
+     * @return bool
+     */
     public function UpdateMeta($id,$data){
         $id = (int) $id; //init
         System::Get('db')->Update($this->table_name,$data,"WHERE meta_id = '$id'"); //update
@@ -94,6 +100,12 @@ class UsersMetaModel {
         return $x? true:false;  //confirm
     }
 
+    public function CheckExist($book,$user,$type){
+        $query = sprintf('WHERE `meta_book_id`=%d AND`meta_user_id`=%d
+                         AND `meta_type` = %d',$book,$user,$type);
+        $x = $this->GetAllMeta($query);
+        return empty($x)? true:false;  //confirm
+    }
 
 
 } 
