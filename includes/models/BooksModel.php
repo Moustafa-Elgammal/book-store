@@ -17,7 +17,7 @@ class BooksModel {
         $books = array(); //init
 
         $query = sprintf("SELECT `$this->table_name`.*,users.uid,users.name,book_store_categories.category_id,book_store_categories.category_title FROM `$this->table_name` LEFT JOIN book_store_categories ON book_category_id = category_id LEFT JOIN users ON book_author_id = users.uid
-                           %s", $extra); // query
+                           %s  ORDER BY `book_store_books`.`book_id` DESC", $extra); // query
         //echo $query;
         System::Get('db')->Execute($query); //execute the query
         if (System::Get('db')->AffectedRows()) { //
@@ -44,8 +44,8 @@ class BooksModel {
      */
     public function GetAuthorBooks(){
         $id = (int)$_SESSION['uid']; //init
-        $books = $this->GetAllBooks("WHERE `$this->table_name`.`book_author_id` = $id"); // execute
-        return !empty($book)? $books: []; //return
+        $book = $this->GetAllBooks("WHERE `$this->table_name`.`book_author_id` = $id"); // execute
+        return !empty($book)? $book: []; //return
     }
     /**
      * Delete a book by it's id
@@ -56,7 +56,7 @@ class BooksModel {
         $id = (int)$book_id; //init
         System::Get('db')->Delete($this->table_name,"WHERE book_id = $id"); // delete
         $x = System::Get('db')->AffectedRows(); //check
-        return $x ? true:false; //confirm
+        return count($x) ? true:false; //confirm
     }
 
     /**
