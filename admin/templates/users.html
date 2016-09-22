@@ -34,11 +34,21 @@
                                   <td>{$value.job}</td>
                                   <td>{$value.email}</td>
                                   <td><span class="label label-info label-mini">{$value.adddate}</span></td>
-                                  <td><span class="label label-info label-mini">{$value.is_admin}</span></td>
+                                  <td><span class="label label-info label-mini">
+                                      {if="$value.is_admin==0"}
+                                        User
+                                      {/if}
+                                      {if="$value.is_admin==1"}
+                                        Admin
+                                      {/if}
+                                      {if="$value.is_admin==2"}
+                                        Author
+                                      {/if}
+                                  </span></td>
                      				
                                   <td>
-                                      <a href="updateuser.php?uid={$value.uid}" class="btn btn-primary"><i class="icon-pencil"></i></a>
-                                      <a href="deleteuser.php?uid={$value.uid}" class="btn btn-danger"><i class="icon-trash "></i></a>
+                                      <a href="updateuser.php?uid={$value.uid}" class="btn btn-primary btn-xs"><i class="icon-pencil">update</i></a>
+                                      <a href="deleteuser.php?uid={$value.uid}" class="btn btn-danger btn-xs"><i class="icon-trash ">delete</i></a>
                                   </td>
                               </tr>
                               </tbody>
