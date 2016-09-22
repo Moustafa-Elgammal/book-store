@@ -52,12 +52,23 @@
 							
 							<div class="form-group">
 								<label for="Is Admin">Is Admin</label>
-								<select name="is_admin">
+								<select id="select_m" name="is_admin">
+								    <option value="{$is_admin}">
+                                        {if="$is_admin==0"}
+                                        No
+                                        {/if}
+                                        {if="$is_admin==1"}
+                                        Yes
+                                        {/if}
+                                        {if="$is_admin==2"}
+                                        Author
+                                        {/if}
+								    </option>
 								    <option value="0">No</option>
                                     <option value="2">Author</option>
                                     <option value="1">Yes</option>
-							
 								</select>
+
 							</div>
 							<input type="hidden"  name="uid" value="{$uid}">
 							<input type="submit" class="btn btn-info" name="submit" value="submit">
