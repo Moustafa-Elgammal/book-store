@@ -7,19 +7,28 @@
     <div class="row">
         {loop="books"}
         <div class="col-sm-4">
-           <p style="font-weight: bold">{$value.book_title},
-               <a href="category.php?id={$value.category_id}"><span class="text-info" style="font-weight: 500">{$value.category_title}</span></a><br>
-               <span class="text-primary" style="font-weight: 500">
-                   <strong>By: </strong>{$value.name}
-               </span>
-           </p>
+            <div clas="row">
+                <div class="col-md-6">
+                    <img src="assets/img/avatar.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                </div>
+                <div class="col-md-6">
+                   <p style="font-weight: bold">{$value.book_title},
+                       <a href="category.php?id={$value.category_id}"><span class="text-info" style="font-weight: 500">{$value.category_title}</span></a><br>
+                       <span class="text-primary" style="font-weight: 500">
+                           <strong>By: </strong>{$value.name}
+                       </span>
+                   </p>
+                </div>
+            </div>
             <p class="text-primary">
-                {function="mb_substr($value.book_content,0,80)"}...
+                {function="mb_substr($value.book_content,0,40)"}...
             </p>
             <div class="text-center">
                 {if="$NOWUID"}
                 <button class="btn btn-info btn-sm want-read"  data-id="{$value.book_id}">Want to read</button>
                 <button class="btn btn-success btn-sm download" data-id="{$value.book_id}" file-data="{$value.book_file}">Download</button>
+                <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
+                {else}
                 <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
                 {/if}
 
