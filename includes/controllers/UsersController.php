@@ -335,7 +335,8 @@ class UsersController
                     else
                     {
 
-                        System::Get('tpl')->assign("message",array(0=>"you can't continue because you are not admin user"));
+                        System::Get('tpl')->assign("message",array(0=>'you can\'t continue because
+                         you are not admin, Go to <a href="../myprofile.php">Your Profile</a>'));
                         System::Get('tpl')->draw("login");
                     }
                 }
