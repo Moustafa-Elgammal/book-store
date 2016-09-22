@@ -44,7 +44,7 @@ class BooksModel {
      */
     public function GetAuthorBooks(){
         $id = (int)$_SESSION['uid']; //init
-        $book = $this->GetAllBooks("WHERE book_user_id = $id"); // execute
+        $book = $this->GetAllBooks("WHERE book_author_id = $id"); // execute
         return !empty($book)? $book[0]: []; //return
     }
     /**
