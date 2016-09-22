@@ -33,12 +33,20 @@ class BooksModel {
      * @return array of the book data or empty
      */
     public function GetById($id){
-        $id = (int)$id;
-
-        $book = $this->GetAllBooks("WHERE book_id = $id");
-        return !empty($book)? $book[0]: array();
+        $id = (int)$id; // init
+        $book = $this->GetAllBooks("WHERE book_id = $id"); //execute
+        return !empty($book)? $book[0]: []; // return
     }
 
+    /**
+     * get all book of the current Author logged in
+     * @return array
+     */
+    public function GetAuthorBooks(){
+        $id = (int)$_SESSION['uid']; //init
+        $book = $this->GetAllBooks("WHERE book_user_id = $id"); // execute
+        return !empty($book)? $book[0]: []; //return
+    }
     /**
      * Delete a book by it's id
      * @param $book_id
