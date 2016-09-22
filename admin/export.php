@@ -1,6 +1,7 @@
 <?php
 require_once '../globals.php';
 Is_Admin ();
+Author();
 $export = ''; // init
 if (isset ( $_GET ['export'] ) && ($_GET ['export'] == 'contacts' || $_GET ['export'] == 'messages')) {
 	$export = $_GET ['export'];

@@ -1,6 +1,7 @@
 <?php
 require_once ('../globals.php');
 Is_Admin();
+Author();
 $up = new uploader();
 if (isset($_POST['submit']))
 {

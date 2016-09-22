@@ -1,6 +1,7 @@
 <?php
 require_once ("../globals.php");
 Is_Admin();
+Author();
 require_once (CONTROLLERS.'AboutController.php');
 require_once (MODELS.'AboutModel.php');
 

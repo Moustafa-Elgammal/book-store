@@ -1,7 +1,7 @@
 <?php
 require_once ("../globals.php");
 Is_Admin();
-
+Author();
 if (isset($_POST['submit']) && ( $_POST['table'] == 'contacts' || $_POST['table'] == 'messages'))
 {
 	$subject=$_POST['subject']; //the subject from form
