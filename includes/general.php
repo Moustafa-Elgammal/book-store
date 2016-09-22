@@ -1,9 +1,9 @@
 <?php
 
 function Author(){
-//    if (isset ( $_SESSION ['is_admin'] ) && $_SESSION ['is_admin'] > 1) {
-//        System::RedirectTo ( 'index.author.php' );
-//    }
+    if (isset ( $_SESSION ['is_admin'] ) && $_SESSION ['is_admin'] > 1) {
+        System::RedirectTo ( 'index.author.php' );
+    }
 }
 
 /**
@@ -11,7 +11,6 @@ function Author(){
  */
 
 function Is_Admin() {
-    Author();
     if (! isset ( $_SESSION ['is_admin'] ) || $_SESSION ['is_admin'] < 1) {
         System::RedirectTo ( 'login.php' );
     }
