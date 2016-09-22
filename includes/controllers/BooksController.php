@@ -91,11 +91,16 @@ class BooksControllers {
      * get all books
      */
     public function AllBooks(){
-        $books = $this->booksModel->GetAllBooks();
-        System::Get('tpl')->assign('books',$books);
-        System::Get('tpl')->draw('allbooks');
+        $books = $this->booksModel->GetAllBooks(); //get the books
+        System::Get('tpl')->assign('books',$books); //assign
+        System::Get('tpl')->draw('allbooks'); //draw
     }
 
+    public function Author_books(){
+        $books = $this->booksModel->GetAuthorBooks(); //get
+        System::Get('tpl')->assign('books',$books); //assign
+        System::Get('tpl')->draw('allbooks'); //draw
+    }
     /**
      * delete Book
      */
