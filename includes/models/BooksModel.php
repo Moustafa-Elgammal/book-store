@@ -44,8 +44,8 @@ class BooksModel {
      */
     public function GetAuthorBooks(){
         $id = (int)$_SESSION['uid']; //init
-        $book = $this->GetAllBooks("WHERE book_author_id = $id"); // execute
-        return !empty($book)? $book[0]: []; //return
+        $books = $this->GetAllBooks("WHERE `$this->table_name`.`book_author_id` = $id"); // execute
+        return !empty($book)? $books: []; //return
     }
     /**
      * Delete a book by it's id
