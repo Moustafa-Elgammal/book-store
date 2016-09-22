@@ -4,7 +4,7 @@
  * to check if there is an admine user is log in
  */
 function Is_Admin() {
-	if (! isset ( $_SESSION ['is_admin'] ) && $_SESSION ['is_admin'] < 1) {
+	if (! isset ( $_SESSION ['is_admin'] ) || $_SESSION ['is_admin'] < 1) {
 		System::RedirectTo ( 'login.php' );
 	}
 	/*
