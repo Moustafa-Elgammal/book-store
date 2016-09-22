@@ -111,7 +111,16 @@ class BooksControllers {
                 die(json_encode(array(
                     'status' => 0
                 )));
+
+
             $id = (int)$_POST['id'];
+            $info = $this->booksModel->GetById($id);
+           // die($_SESSION['uid']);
+            if($_SESSION['uid'] != $info['book_author_id'] && $_SESSION['is_admin'] > 0 )
+                die(json_encode(array(
+                    'status' => 0
+                )));
+
             $x = $this->booksModel->DeleteBook($id);
             if($x)
                 die(json_encode(array(
@@ -119,7 +128,7 @@ class BooksControllers {
                 )));
             else
                 die(json_encode(array(
-                    'status' => 1
+                    'status' => 0
                 )));
         }else{
             die(json_encode(array(
