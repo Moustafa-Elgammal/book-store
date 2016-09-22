@@ -32,7 +32,7 @@ class ReviewsController {
                     'msg' => 'You have been review this book before'
                 )));
 
-            if (!isset($_POST['number']) || (int)$_POST['number'] < 1 || (int)$_POST['number']  >= 10 )
+            if (!isset($_POST['number']) || (int)$_POST['number'] < 1 || (int)$_POST['number']  > 10 )
                 die(json_encode(array(
                     'status' => 0,
                     'msg' => 'review scale must be from 1 to 10 only'
