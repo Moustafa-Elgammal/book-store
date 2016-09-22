@@ -326,17 +326,14 @@ class UsersController
                     $_SESSION["uid"] = $userdata['uid'];
 
                     //var_dump($_SESSION);
-                    if($_SESSION['is_admin']==1)
+                    if($_SESSION['is_admin']>1)
                     {
-
                         System::RedirectTo('index.php');
-
                     }
                     else
                     {
-
                         System::Get('tpl')->assign("message",array(0=>'you can\'t continue because
-                         you are not admin, Go to <a href="../myprofile.php">Your Profile</a>'));
+                         you are not admin or Author, Go to <a href="../myprofile.php">Your Profile</a>'));
                         System::Get('tpl')->draw("login");
                     }
                 }
