@@ -51,10 +51,18 @@ class BooksControllers {
                 )));
             }
 
+            if(!isset($_POST['file']) || strlen($_POST['file']) < 5|| !file_exists($_POST['file'])){
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg"    => "Please upload file"
+                )));
+            }
+
 
 
             $data = array(
                 'book_photo' => $_POST['photo'],
+                'book_file' => $_POST['file'],
                 'book_title' => $_POST['title'],
                 'book_content' => $_POST['content'],
                 'book_category_id' => $_POST['category'],
