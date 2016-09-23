@@ -1,4 +1,6 @@
 <?php
+require_once('../globals.php');
+Is_Admin();
 
 if(isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"]== UPLOAD_ERR_OK)
 {
@@ -31,13 +33,13 @@ if(isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"]== UPLOAD_ERR_OK)
 			case 'image/gif':
 			case 'image/jpeg':
 			case 'image/pjpeg':
-			case 'text/plain':
-			case 'text/html': //html file
-			case 'application/x-zip-compressed':
-			case 'application/pdf':
-			case 'application/msword':
-			case 'application/vnd.ms-excel':
-			case 'video/mp4':
+//			case 'text/plain':
+//			case 'text/html': //html file
+//			case 'application/x-zip-compressed':
+//			case 'application/pdf':
+//			case 'application/msword':
+//			case 'application/vnd.ms-excel':
+//			case 'video/mp4':
 				break;
 			default:
 				die('Unsupported File!'); //output error
