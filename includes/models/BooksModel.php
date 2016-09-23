@@ -87,5 +87,15 @@ class BooksModel {
         return !empty($book)? $book: array();
     }
 
+    /**
+     * get author book
+     * @param $id
+     * @return array
+     */
+    public function GetByAuthorId($id){
+        $id = (int)$id; //init
+        $book = $this->GetAllBooks("WHERE `$this->table_name`.`book_author_id` = $id"); // execute
+        return !empty($book)? $book: []; //return
+    }
 
 }
