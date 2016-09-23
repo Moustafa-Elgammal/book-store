@@ -17,31 +17,69 @@
 
                 <section class="panel">
                     <header class="panel-heading"> Update Book {$book_title}</header>
-
-                    <h3>Change Book File</h3>
-                    <div id="loaded-img" style="display: none;">
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../{$book_photo}" width="250px">
+                        </div>
+                        <div class="col-md-6">
+                            <br/>
+                            <br/>
+                            <h4><a href="../{$book_file}" target="_blank">old PDF file.</a></h4>
+                        </div>
                     </div>
-                    <i id="remove_image" class="btn btn-danger" style="display: none;">x</i>
 
-                    <div id="output"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Change Book Cover</h3>
+                            <div id="loaded-img" style="display: none;">
 
-                    <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
-                        <input class="form-control"  name="FileInput" id="FileInput" type="file"/>
-                        <input style="margin:7px" type="submit" class="btn btn-info" id="submit-btn" value="Upload"/>
-                        <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
-                    </form>
+                            </div>
+                            <i id="remove_image" class="btn btn-danger" style="display: none;">x</i>
 
-                    <div id="progressbox" style="display: none">
-                        <div id="progressbar"></div>
-                        <div id="statustxt">0%</div>
+                            <div id="output"></div>
+
+                            <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                                <input class="form-control"  name="FileInput" id="FileInput" type="file"/>
+                                <input style="margin:7px" type="submit" class="btn btn-info" id="submit-btn" value="Upload"/>
+                                <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+                            </form>
+
+                            <div id="progressbox" style="display: none">
+                                <div id="progressbar"></div>
+                                <div id="statustxt">0%</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3>Change Book PDF file</h3>
+                            <div id="loaded-img-pdf" style="display: none;">
+
+                            </div>
+                            <i id="remove_image-pdf" class="btn btn-danger" style="display: none;">x</i>
+
+                            <div id="output-pdf"></div>
+
+                            <form action="SDfsdjsknfkjsdf.php" method="post" enctype="multipart/form-data" id="MyUploadForm-pdf">
+                                <input class="form-control"  name="FileInput" id="FileInput-pdf" type="file"/>
+                                <input style="margin:7px" type="submit" class="btn btn-info" id="submit-btn-pdf" value="Upload"/>
+                                <img src="img/ajax-loader.gif" id="loading-img-pdf" style="display:none;" alt="Please Wait"/>
+                            </form>
+
+                            <div id="progressbox-pdf" style="display: none">
+                                <div id="progressbar-pdf"></div>
+                                <div id="statustxt-pdf">0%</div>
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="panel-body">
                         <form id="add_cat_form" action="updatebook.php" role="form" method="post">
                             <div class="form-group">
-                                <input type="hidden" value = "{$book_file}" name="photo"  id="ajaxed_photo">
+                                <input type="hidden" value = "{$book_photo}" name="photo"  id="ajaxed_photo">
+                                <input type="hidden" value = "{$book_photo}" name="photo_old" id="ajaxed_photo_old">
+                                <input type="hidden" value = "{$book_file}" name="file"  id="ajaxed_photo-pdf">
+                                <input type="hidden" value = "{$book_file}" name="file_old">
                                 <label for="Category Name">Book Name</label>
                                 <input type="text" class="form-control" value="{$book_title}" for="Category Name" placeholder="Category Name" name="title"
                                        required>
