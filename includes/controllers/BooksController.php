@@ -54,7 +54,7 @@ class BooksControllers {
 
 
             $data = array(
-                'book_file' => $_POST['photo'],
+                'book_photo' => $_POST['photo'],
                 'book_title' => $_POST['title'],
                 'book_content' => $_POST['content'],
                 'book_category_id' => $_POST['category'],
@@ -164,9 +164,17 @@ class BooksControllers {
                     "msg"    => "Please select valid category"
                 )));
             }
-
-            if(isset($_POST['photo']) && strlen($_POST['photo']) < 5 && file_exists($_POST['photo'])){
-                $data['book_file'] = $_POST['photo'];
+            //init cover photo
+            if(isset($_POST['photo']) && strlen($_POST['photo']) > 5 && file_exists($_POST['photo'])){
+                $data['book_photo'] = $_POST['photo'];
+            } else{
+                $data['book_photo'] = $_POST['photo_old'];
+            }
+            //init pdf file photo
+            if(isset($_POST['file']) && strlen($_POST['file']) > 5 && file_exists($_POST['file'])){
+                $data['book_file'] = $_POST['file'];
+            } else {
+                $data['book_file'] = $_POST['file_old'];
             }
 
             $data['book_title'] = $_POST['title'];
