@@ -326,7 +326,7 @@ class UsersController
                     $_SESSION["uid"] = $userdata['uid'];
 
                     //var_dump($_SESSION);
-                    if($_SESSION['is_admin']>1)
+                    if($_SESSION['is_admin']>=1)
                     {
                         System::RedirectTo('index.php');
                     }
