@@ -37,7 +37,7 @@ jQuery(document).ready(function($){
                 method: 'post',
                 data: data
             }).done(function (data) {
-                alert(data);
+
                 var reply = JSON.parse(data);
                 if (reply.status) {
                     $('.alert').removeClass('alert-danger');
