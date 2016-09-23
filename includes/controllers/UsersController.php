@@ -704,4 +704,22 @@ class UsersController
         }
     }
 
+    public function GetAuthor(BooksModel $book){
+        $id = 0; //init
+        $books = [];
+        if (isset($_GET['id']) && (int)$_GET['id']) {
+            $id = (int)$_GET['id'];
+            $user = $this->UsersModel->Get_By_ID($id);
+            !empty($user) ? System::Get('tpl')->assign($user) : die('404');
+            $books = $book->GetByAuthorId($id);
+            System::Get('tpl')->assign('books', $books);
+            System::Get('tpl')->draw('header');
+            System::Get('tpl')->draw('author');
+            System::Get('tpl')->draw('footer');
+        } else {
+            echo '404';
+
+        }
+    }
+
 }
