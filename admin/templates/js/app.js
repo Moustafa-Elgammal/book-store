@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
     });
 
 
-    /*--------------admin area queries -------------*/
+    /*--------------admin area queries-------------*/
 
     /**
      * add new category
@@ -115,7 +115,7 @@ jQuery(document).ready(function($){
 
             if( !$('#FileInput').val()) //check empty input filed
             {
-                $("#output").html("Are you kidding me?");
+                $("#output").html("Can't find the cover.");
                 return false
             }
 
@@ -221,7 +221,7 @@ jQuery(document).ready(function($){
      * upload pdf
      */
 
-    var options = {
+    var options_pdf = {
         //   target:   '#output',   // target element(s) to be updated with server response
         beforeSubmit:  beforeSubmit_pdf,  // pre-submit callback
         success:       afterSuccess_pdf,  // post-submit callback
@@ -229,8 +229,8 @@ jQuery(document).ready(function($){
         resetForm: true        // reset the form after successful submit
     };
 
-    $('#MyUploadForm-pdf').submit(function() {
-        $(this).ajaxSubmit(options);
+    $('#pdf').submit(function() {
+        $(this).ajaxSubmit(options_pdf);
         // always return false to prevent standard browser submit and page navigation
         return false;
     });
@@ -238,21 +238,21 @@ jQuery(document).ready(function($){
 //function after succesful file upload (when server response)
     function afterSuccess_pdf(data)
     {
-        $('#submit-btn-pdf').show(); //hide submit button
+        $('#submit-btn_pdf').show(); //hide submit button
         $('#loading-img-pdg').hide(); //hide submit button
-        $('#progressbox-pdf').delay( 1000 ).fadeOut(); //hide progress
+        $('#progressbox_pdf').delay( 1000 ).fadeOut(); //hide progress
         var info = JSON.parse(data);
         if(info.status) {
             $("#output").text(info.msg);
-            $("#loaded-img-pdf").html('<a id="file_image-pdf" href="'+info.file+'" target="_blank">Show</a>');
-            $("#ajaxed_photo-pdf").val(info.file);
-            $("#loaded-img-pdf").show();
+            $("#loaded-img_pdf").html('<a id="file_image_pdf" href="'+info.file+'" target="_blank">Show</a>');
+            $("#ajaxed_photo_pdf").val(info.file);
+            $("#loaded-img_pdf").show();
 
-            $("#MyUploadForm-pdf").hide();
+            $("#MyUploadForm_pdf").hide();
 
         }
         else
-            $("#output-pdf").text(info.msg);
+            $("#output_pdf").text(info.msg);
     }
 
 //function to check file size before uploading.
@@ -261,14 +261,14 @@ jQuery(document).ready(function($){
         if (window.File && window.FileReader && window.FileList && window.Blob)
         {
 
-            if( !$('#FileInput-pdf').val()) //check empty input filed
+            if( !$('#FileInput_pdf').val()) //check empty input filed
             {
-                $("#output-pdf").html("Are you kidding me?");
+                $("#output_pdf").html("Can't find the file.");
                 return false
             }
 
-            var fsize = $('#FileInput-pdf')[0].files[0].size; //get file size
-            var ftype = $('#FileInput-pdf')[0].files[0].type; // get file type
+            var fsize = $('#FileInput_pdf')[0].files[0].size; //get file size
+            var ftype = $('#FileInput_pdf')[0].files[0].type; // get file type
 
 
             //allow file types
@@ -277,25 +277,25 @@ jQuery(document).ready(function($){
                 case 'application/pdf':
                     break;
                 default:
-                    $("#output-pdf").html("<b>"+ftype+"</b> Unsupported file type!");
+                    $("#output_pdf").html("<b>"+ftype+"</b> Unsupported file type!");
                     return false
             }
 
             //Allowed file size is less than 5 MB (1048576)
             if(fsize>5242880)
             {
-                $("#output-pdf").html("<b>"+bytesToSize(fsize) +"</b> Too big file! <br />File is too big, it should be less than 5 MB.");
+                $("#output_pdf").html("<b>"+bytesToSize(fsize) +"</b> Too big file! <br />File is too big, it should be less than 5 MB.");
                 return false
             }
-            $("#loaded-img-pdf").show();
-            $('#submit-btn-pdf').hide(); //hide submit button
-            $('#loading-img-pdf').show(); //hide submit button
-            $("#output-pdf").html("");
+            $("#loaded-img_pdf").show();
+            $('#submit-btn_pdf').hide(); //hide submit button
+            $('#loading-img_pdf').show(); //hide submit button
+            $("#output_pdf").html("");
         }
         else
         {
             //Output error to older unsupported browsers that doesn't support HTML5 File API
-            $("#output-pdf").html("Please upgrade your browser, because your current browser lacks some new features we need!");
+            $("#output_pdf").html("Please upgrade your browser, because your current browser lacks some new features we need!");
             return false;
         }
     }
@@ -304,12 +304,12 @@ jQuery(document).ready(function($){
     function OnProgress_pdf(event, position, total, percentComplete)
     {
         //Progress bar
-        $('#progressbox-pdf').show();
-        $('#progressbar-pdf').width(percentComplete + '%') //update progressbar percent complete
-        $('#statustxt-pdf').html(percentComplete + '%'); //update status text
+        $('#progressbox_pdf').show();
+        $('#progressbar_pdf').width(percentComplete + '%') //update progressbar percent complete
+        $('#statustxt_pdf').html(percentComplete + '%'); //update status text
         if(percentComplete>50)
         {
-            $('#statustxt-pdf').css('color','#000'); //change status text to white after 50%
+            $('#statustxt_pdf').css('color','#000'); //change status text to white after 50%
         }
     }
 //function to format bites bit.ly/19yoIPO
