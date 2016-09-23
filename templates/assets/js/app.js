@@ -106,5 +106,18 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    /**
+     * logout ajax
+     * just reload the current page
+     */
+    $('#log-out').click(function(ev){
+        $.get('admin/logout.php').done(function(){
+            window.location.reload();
+        });
+        ev.preventDefault();
+    });
+    /**
+     * loading page
+     */
     $('.loader_lg_page').fadeOut(5000);
 });
