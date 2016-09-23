@@ -17,6 +17,7 @@ jQuery(document).ready(function($){
             $("#MyUploadForm").show();
             $("#output").html("");
             $("#remove_image").hide();
+            $("#ajaxed_photo").val("");
         });
 
     });
@@ -29,13 +30,14 @@ jQuery(document).ready(function($){
      */
 
     $("#add_cat").click(function(ev){
-        if($("#ajaxed_photo").val().length) {
+        if($("#ajaxed_photo").val().length || $("#ajaxed_photo_old").val().length ) {
             var data = $("#add_cat_form").serialize();
             $.ajax({
                 url: $('#add_cat_form').attr('action'),
                 method: 'post',
                 data: data
             }).done(function (data) {
+                alert(data);
                 var reply = JSON.parse(data);
                 if (reply.status) {
                     $('.alert').removeClass('alert-danger');
@@ -47,6 +49,7 @@ jQuery(document).ready(function($){
                     $("#loaded-img").html("");
                     $("#MyUploadForm").show();
                     $("#remove_image").hide();
+                    window.location.reload();
                 } else {
                     $('.alert').removeClass('alert-success');
                     $('.alert').addClass('alert-danger');
@@ -57,7 +60,7 @@ jQuery(document).ready(function($){
         }else{
             $('.alert').removeClass('alert-success');
             $('.alert').addClass('alert-danger');
-            $('.msg').html("please select upload file");
+            $('.msg').html("please select photo file");
             $('.alert').show();
 
         }
@@ -83,6 +86,7 @@ jQuery(document).ready(function($){
         // always return false to prevent standard browser submit and page navigation
         return false;
     });
+
 //function after succesful file upload (when server response)
     function afterSuccess(data)
     {
@@ -126,7 +130,7 @@ jQuery(document).ready(function($){
                 case 'image/gif':
                 case 'image/jpeg':
                 case 'image/pjpeg':
-                case 'application/pdf':
+                //case 'application/pdf':
                     break;
                 default:
                     $("#output").html("<b>"+ftype+"</b> Unsupported file type!");
@@ -212,5 +216,110 @@ jQuery(document).ready(function($){
             }
         });
     });
+
+    /**
+     * upload pdf
+     */
+
+    var options = {
+        //   target:   '#output',   // target element(s) to be updated with server response
+        beforeSubmit:  beforeSubmit_pdf,  // pre-submit callback
+        success:       afterSuccess_pdf,  // post-submit callback
+        uploadProgress: OnProgress_pdf, //upload progress callback
+        resetForm: true        // reset the form after successful submit
+    };
+
+    $('#MyUploadForm-pdf').submit(function() {
+        $(this).ajaxSubmit(options);
+        // always return false to prevent standard browser submit and page navigation
+        return false;
+    });
+
+//function after succesful file upload (when server response)
+    function afterSuccess_pdf(data)
+    {
+        $('#submit-btn-pdf').show(); //hide submit button
+        $('#loading-img-pdg').hide(); //hide submit button
+        $('#progressbox-pdf').delay( 1000 ).fadeOut(); //hide progress
+        var info = JSON.parse(data);
+        if(info.status) {
+            $("#output").text(info.msg);
+            $("#loaded-img-pdf").html('<a id="file_image-pdf" href="'+info.file+'" target="_blank">Show</a>');
+            $("#ajaxed_photo-pdf").val(info.file);
+            $("#loaded-img-pdf").show();
+
+            $("#MyUploadForm-pdf").hide();
+
+        }
+        else
+            $("#output-pdf").text(info.msg);
+    }
+
+//function to check file size before uploading.
+    function beforeSubmit_pdf(){
+        //check whether browser fully supports all File API
+        if (window.File && window.FileReader && window.FileList && window.Blob)
+        {
+
+            if( !$('#FileInput-pdf').val()) //check empty input filed
+            {
+                $("#output-pdf").html("Are you kidding me?");
+                return false
+            }
+
+            var fsize = $('#FileInput-pdf')[0].files[0].size; //get file size
+            var ftype = $('#FileInput-pdf')[0].files[0].type; // get file type
+
+
+            //allow file types
+            switch(ftype)
+            {
+                case 'application/pdf':
+                    break;
+                default:
+                    $("#output-pdf").html("<b>"+ftype+"</b> Unsupported file type!");
+                    return false
+            }
+
+            //Allowed file size is less than 5 MB (1048576)
+            if(fsize>5242880)
+            {
+                $("#output-pdf").html("<b>"+bytesToSize(fsize) +"</b> Too big file! <br />File is too big, it should be less than 5 MB.");
+                return false
+            }
+            $("#loaded-img-pdf").show();
+            $('#submit-btn-pdf').hide(); //hide submit button
+            $('#loading-img-pdf').show(); //hide submit button
+            $("#output-pdf").html("");
+        }
+        else
+        {
+            //Output error to older unsupported browsers that doesn't support HTML5 File API
+            $("#output-pdf").html("Please upgrade your browser, because your current browser lacks some new features we need!");
+            return false;
+        }
+    }
+
+//progress bar function
+    function OnProgress_pdf(event, position, total, percentComplete)
+    {
+        //Progress bar
+        $('#progressbox-pdf').show();
+        $('#progressbar-pdf').width(percentComplete + '%') //update progressbar percent complete
+        $('#statustxt-pdf').html(percentComplete + '%'); //update status text
+        if(percentComplete>50)
+        {
+            $('#statustxt-pdf').css('color','#000'); //change status text to white after 50%
+        }
+    }
+//function to format bites bit.ly/19yoIPO
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Bytes';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+    }
+
+
 
 });
