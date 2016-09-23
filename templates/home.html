@@ -9,19 +9,19 @@
         <div class="col-sm-4">
             <div clas="row">
                 <div class="col-md-6">
-                    <img src="assets/img/avatar.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                    <img src="../uploads/{$value.book_photo}" alt="{$value.book_title} cover" class="img-rounded img-responsive">
                 </div>
                 <div class="col-md-6">
-                   <p style="font-weight: bold">{$value.book_title},
-                       <a href="category.php?id={$value.category_id}"><span class="text-info" style="font-weight: 500">{$value.category_title}</span></a><br>
+                   <p style="font-weight: bold"><a class="text-success" href="book.php?id={$value.book_id}"> {$value.book_title}</a>
+                      , <a href="category.php?id={$value.category_id}"><span class="text-info" style="font-weight: 500">{$value.category_title}</span></a><br>
                        <span class="text-primary" style="font-weight: 500">
-                           <strong>By: </strong>{$value.name}
+                           <strong>By: </strong><a href="author.php?id={$value.uid}">{$value.name}</a>
                        </span>
                    </p>
                 </div>
             </div>
             <p class="text-primary">
-                {function="mb_substr($value.book_content,0,40)"}...
+                {function="mb_substr($value.book_content,0,100)"}...
             </p>
             <div class="text-center">
                 {if="$NOWUID"}
