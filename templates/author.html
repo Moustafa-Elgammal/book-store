@@ -1,0 +1,47 @@
+<div class="row text-center">
+    <h2>{$name}name</h2>
+   <!-- <img  src="../{$category_photo}" alt="Rounded Image" class="img-rounded img-responsive" style="margin: 0 auto;">-->
+    <p style="font-weight: 700">{$about} about</p>
+</div>
+
+
+<div id="images">
+    <div class="title">
+        <h2>All books from this Author</h2>
+    </div>
+    <br>
+    <div class="row">
+        {loop="books"}
+        <div class="col-sm-4">
+            <div clas="row">
+                <div class="col-md-6">
+                    <img src="../uploads/{$value.book_photo}" alt="{$value.book_title} cover" class="img-rounded img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <p style="font-weight: bold"><a class="text-success" href="book.php?id={$value.book_id}"> {$value.book_title}</a>
+                        , <a href="category.php?id={$value.category_id}"><span class="text-info" style="font-weight: 500">{$value.category_title}</span></a><br>
+                       <span class="text-primary" style="font-weight: 500">
+                           <strong>By: </strong><a href="author.php?id={$value.uid}">{$value.name}</a>
+                       </span>
+                    </p>
+                </div>
+            </div>
+            <p class="text-primary">
+                {function="mb_substr($value.book_content,0,100)"}...
+            </p>
+            <div class="text-center">
+                {if="$NOWUID"}
+                <button class="btn btn-info btn-sm want-read"  data-id="{$value.book_id}">Want to read</button>
+                <button class="btn btn-success btn-sm download" data-id="{$value.book_id}" file-data="{$value.book_file}">Download</button>
+                <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
+                {else}
+                <button class="btn btn-info btn-sm view-more" data-id="{$value.book_id}">View More</button>
+                {/if}
+
+            </div>
+
+        </div>
+        {/loop}
+    </div>
+
+</div>
