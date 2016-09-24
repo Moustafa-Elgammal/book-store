@@ -68,6 +68,20 @@ class UsersModel {
         return FALSE;
     }
 
+    /**
+     * function to get authors
+     * @return  users
+     */
+    public function Get_By_Authors()
+    {
+
+        $users = $this->Get("WHERE `is_admin`=2");
+        if(count($users) > 0)
+        {
+            return $users;
+        }
+        return FALSE;
+    }
 	/**
 	 * check the user info with its email or user name
 	 */
