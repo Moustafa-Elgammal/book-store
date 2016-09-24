@@ -1,0 +1,76 @@
+{include="header"}
+
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="alert alert-block fade in" style="display: none">
+                    <button class="btn btn-info msg_close" style="float:right;left: inherit;right: 10px;"><i class="icon-remove">close</i></button>
+                    <h4>
+                        <i class="icon-ok-sign"></i> Message !
+                    </h4>
+                    <p class="msg"></p>
+                </div>
+
+                <section class="panel">
+                    <header class="panel-heading"> Update Category {$category_title}</header>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../{$category_photo}" width="250px">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Change Book Cover</h3>
+                            <div id="loaded-img" style="display: none;">
+
+                            </div>
+                            <i id="remove_image" class="btn btn-danger" style="display: none;">x</i>
+
+                            <div id="output"></div>
+
+                            <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                                <input class="form-control"  name="FileInput" id="FileInput" type="file"/>
+                                <input style="margin:7px" type="submit" class="btn btn-info" id="submit-btn" value="Upload"/>
+                                <img src="img/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+                            </form>
+
+                            <div id="progressbox" style="display: none">
+                                <div id="progressbar"></div>
+                                <div id="statustxt">0%</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel-body">
+                        <form id="add_cat_form" action="update_category.php" role="form" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value = "{$category_photo}" name="photo"  id="ajaxed_photo">
+                                <input type="hidden" value = "{$category_photo}" name="photo_old" id="ajaxed_photo_old">
+                                <label for="Category Name">Category Name</label>
+                                <input type="text" class="form-control" value="{$category_title}" for="Category Name" placeholder="Category Name" name="title"
+                                       required>
+                                <label for="Category description">Book description</label>
+                                <textarea class="form-control" for="Category description"
+                                          placeholder="Category description" name="content" required>{$category_content}</textarea>
+                            </div>
+                            <input type="hidden" name="id" value="{$category_id}">
+                            <input id="add_cat" type="submit" class="btn btn-info" name="submit" value="submit">
+                        </form>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+{include="footer"}
+
