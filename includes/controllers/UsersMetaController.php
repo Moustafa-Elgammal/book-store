@@ -104,11 +104,15 @@ class UsersMetaController {
         $readBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],WANT_TO_READ);
         $downloadedBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],DOWNLOADED);
 
-        echo'<pre>';
-        var_dump($readBooks);
-        echo'<hr>';
-        var_dump($downloadedBooks);
-
+        System::Get('tpl')->assign('reads',$readBooks);
+        System::Get('tpl')->assign('downloads',$downloadedBooks);
+//        echo'<pre>';
+//        var_dump($readBooks);
+//        echo'<hr>';
+//        var_dump($downloadedBooks);
+        System::Get('tpl')->draw('header');
+        System::Get('tpl')->draw('profile');
+        System::Get('tpl')->draw('footer');
     }
 
 } 
