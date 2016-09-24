@@ -100,5 +100,15 @@ class UsersMetaController {
 
     }
 
+    public function UserProfile(){
+        $readBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],WANT_TO_READ);
+        $downloadedBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],DOWNLOADED);
+
+        echo'<pre>';
+        var_dump($readBooks);
+        echo'<hr>';
+        var_dump($downloadedBooks);
+
+    }
 
 } 
