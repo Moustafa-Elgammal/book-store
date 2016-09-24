@@ -722,4 +722,13 @@ class UsersController
         }
     }
 
+    /**
+     * show the admin all authors 
+     */
+    public function GetAuthors(){
+        $users = $this->UsersModel->Get_By_Authors();
+        System::Get('tpl')->assign('users',$users);
+        System::Get('tpl')->draw('users');
+    }
+
 }
