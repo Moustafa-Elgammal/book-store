@@ -22,7 +22,7 @@ class UsersMetaModel {
     {
         $books = array(); //init
 
-        $query = sprintf("SELECT * FROM %s %s", $this->table_name, $extra); // query
+        $query = sprintf("SELECT %s.*,book_store_books.book_id,book_store_books.book_title FROM %s  LEFT JOIN book_store_books ON meta_book_id = book_id  %s", $this->table_name,$this->table_name, $extra); // query
         //echo $query;
         System::Get('db')->Execute($query); //execute the query
         if (System::Get('db')->AffectedRows()) { //
@@ -40,7 +40,7 @@ class UsersMetaModel {
     public function GetById($id){
         $id = (int)$id;
 
-        $book = $this->GetAllReviews("WHERE meta_id = $id");
+        $book = $this->GetAllMeta("WHERE meta_id = $id");
         return $book[0];
     }
 
@@ -53,14 +53,14 @@ class UsersMetaModel {
      */
     public function GetByUserID($id){
         $id = (int)$id; // init
-        $user_meta = $this->GetAllReviews("WHERE meta_user_id = $id"); // order
+        $user_meta = $this->GetAllMeta("WHERE meta_user_id = $id"); // order
         return $user_meta; // return data
     }
 
     public function GetByMetaType($user_id,$meta_type){
         $user_id = (int)$user_id; // init
         $meta_type = (int) $meta_type;
-        $user_meta = $this->GetAllReviews("WHERE (meta_user_id = $user_id AND meta_type = $meta_type)"); // order
+        $user_meta = $this->GetAllMeta("WHERE (meta_user_id = $user_id AND meta_type = $meta_type)"); // order
         return $user_meta; // return data
     }
 
