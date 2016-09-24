@@ -723,7 +723,7 @@ class UsersController
     }
 
     /**
-     * show the admin all authors 
+     * show the admin all authors
      */
     public function GetAuthors(){
         $users = $this->UsersModel->Get_By_Authors();
