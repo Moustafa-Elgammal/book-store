@@ -1,0 +1,73 @@
+<section class="wrapper">
+    <div class="col-lg-6">
+        <section class="panel">
+            {if="count($reads)"}
+            <header class="panel-heading">
+                Your Read books
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                <tr>
+                    <th><i class="icon-arrow-down"></i>Book id</th>
+                    <th><i class="icon-arrow-down"></i>Book Name</th>
+                    <th><i class=" icon-cog"></i> Control</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {loop="$reads"}
+
+                <tr id="book-{$value.book_id}">
+                    <td>{$value.book_id}</td>
+                    <td class="hidden-phone">{$value.book_title}</td>
+                    <td>
+                        <a  class="btn btn-info btn-xs" href="book.php?id={$value.book_id}">show</i></a>
+                    </td>
+                </tr>
+                {/loop}
+                </tbody>
+            </table>
+            {else}
+            <header class="panel-heading">
+                You didn't read any book until now.
+            </header>
+            {/if}
+        </section>
+    </div>
+    <div class="col-lg-6">
+        <section class="panel">
+            {if="count($downloads)"}
+            <header class="panel-heading">
+                Your downloaded books
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                <tr>
+                    <th><i class="icon-arrow-down"></i>Book id</th>
+                    <th><i class="icon-arrow-down"></i>Book Name</th>
+                    <th><i class=" icon-cog"></i> Control</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {loop="$downloads"}
+
+                <tr id="book-{$value.book_id}">
+                    <td>{$value.book_id}</td>
+                    <td class="hidden-phone">{$value.book_title}</td>
+                    <td>
+                        <a  class="btn btn-info btn-xs" href="book.php?id={$value.book_id}">show</i></a>
+                    </td>
+                </tr>
+                {/loop}
+                </tbody>
+            </table>
+            {else}
+            <header class="panel-heading">
+                You didn't download any book until now.
+            </header>
+            {/if}
+        </section>
+    </div>
+
+</section>
