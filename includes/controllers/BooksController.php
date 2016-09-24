@@ -124,7 +124,7 @@ class BooksControllers {
             $id = (int)$_POST['id'];
             $info = $this->booksModel->GetById($id);
            // die($_SESSION['uid']);
-            if($_SESSION['uid'] != $info['book_author_id'] && $_SESSION['is_admin'] > 0 )
+            if($_SESSION['uid'] != $info['book_author_id'] && $_SESSION['is_admin'] != 1 )
                 die(json_encode(array(
                     'status' => 0
                 )));
