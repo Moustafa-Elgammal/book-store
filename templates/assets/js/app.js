@@ -106,6 +106,23 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    $('.delete-review').click(function(){
+        var review_id = $(this).attr('review-id');
+        var user_id = $(this).attr('user-id');
+
+        $.ajax({
+            url:'admin/delete_review.php',
+            method:'post',
+            data:'user_id='+user_id+'&review_id='+review_id
+        }).done(function(data){
+            var info = JSON.parse(data);
+            if(info.status){
+                $('#review-'+review_id).remove();
+            }else{
+                alert(info.msg);
+            }
+        });
+    });
     /**
      * logout ajax
      * just reload the current page
