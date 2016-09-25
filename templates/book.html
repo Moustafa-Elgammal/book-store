@@ -25,7 +25,7 @@
         <div class="col-lg-10 col-lg-push-1">
             <h4 class="col-lg-12 col-sm-pull-1">All Reviews</h4>
             {loop="reviews"}
-            <div class="row">
+            <div class="row" id="review-{$value.review_id}">
                <strong>{$value.name}, </strong>
                 {if="$value.review_percent>1"}
                 {$value.review_percent} Stars
@@ -33,11 +33,17 @@
                     star
                 {/if},
                 <sd class="text-success">{$value.review_date}</sd>
+
+                {if="(isset($NOWADMIN)&&$NOWADMIN==1)||$NOWUID==$value.uid"}
+                <button class="btn-xs btn-danger pull-right delete-review" review-id="{$value.review_id}" user-id="{$value.uid}">delete</button>
+                <br>
+                {/if}
                 {if="strlen($value.review_content)"}
                 <p class="text-primary">{$value.review_content}</p>
                 {else}
                 <p class="text-danger">There no comment in this review</p>
                 {/if}
+
                 <hr/>
             </div>
             {else}
