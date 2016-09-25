@@ -80,6 +80,15 @@ class ReviewsController {
                     'msg' => 'you Must login first'
                 )));
 
+            if (!isset($_POST['user_id']) ||( $_SESSION['is_admin'] != 1 &&  $_SESSION['uid'] != (int)$_POST['user_id']))
+                die(json_encode(array(
+                    'status' => 0,
+                    'msg' => 'You can\'t delete this.'
+                )));
+
+
+
+
         }
     }
 } 
