@@ -74,7 +74,11 @@ class ReviewsController {
     public function DeleteReview()
     {
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-
+            if (!$_SESSION['uid'])
+                die(json_encode(array(
+                    'status' => 0,
+                    'msg' => 'you Must login first'
+                )));
 
         }
     }
