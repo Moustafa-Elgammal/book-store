@@ -94,6 +94,13 @@ class ReviewsController {
                     'msg' => 'Not found...'
                 )));
 
+            if ($_POST['user_id'] != $review['review_user_id'] &&  $_SESSION['is_admin'] != 1 )
+                die(json_encode(array(
+                    'status' => 0,
+                    'msg' => "You can't delete this."
+                )));
+
+
 
 
         }
