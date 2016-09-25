@@ -100,7 +100,8 @@ class ReviewsController {
                     'msg' => "You can't delete this."
                 )));
 
-
+            $x = $this->reviewsModel->DeleteReview((int)$_POST['user_id']);
+             
 
 
         }
