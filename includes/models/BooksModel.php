@@ -57,6 +57,7 @@ class BooksModel {
         System::Get('db')->Delete($this->table_name," WHERE book_id = $id "); // delete
         $x = System::Get('db')->AffectedRows(); //check
         System::Get('db')->Delete('book_store_users_meta'," WHERE meta_book_id = $id ");
+        System::Get('db')->Delete('book_store_books_reviews'," WHERE review_book_id = $id ");
         return count($x) ? true:false; //confirm
     }
 
