@@ -86,6 +86,13 @@ class ReviewsController {
                     'msg' => 'You can\'t delete this.'
                 )));
 
+            $review = $this->reviewsModel->GetById((int)$_POST['review_id']); // init review info
+
+            if (!count($review))
+                die(json_encode(array(
+                    'status' => 0,
+                    'msg' => 'Not found...'
+                )));
 
 
 
