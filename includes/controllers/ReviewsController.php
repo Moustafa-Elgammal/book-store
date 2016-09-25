@@ -70,4 +70,12 @@ class ReviewsController {
             echo '404';
         }
     }
+
+    public function DeleteReview()
+    {
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+
+        }
+    }
 } 
