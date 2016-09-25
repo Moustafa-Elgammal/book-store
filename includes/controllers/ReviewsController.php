@@ -100,10 +100,13 @@ class ReviewsController {
                     'msg' => "You can't delete this."
                 )));
 
-            $x = $this->reviewsModel->DeleteReview((int)$_POST['user_id']);
-             
+            $x = $this->reviewsModel->DeleteReview((int)$_POST['review_id']);
 
-
+            $x ? die(json_encode([
+                'status' => 1,
+                'msg' => "deleted"])):die(json_encode([
+                'status' => 0,
+                'msg' => "You can't delete this."]));
         }
     }
 } 
