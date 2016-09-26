@@ -111,5 +111,6 @@ class ReviewsController {
                 'status' => 0,
                 'msg' => "You can't delete this."]));
         }
+        System::RedirectTo('../');
     }
 } 
