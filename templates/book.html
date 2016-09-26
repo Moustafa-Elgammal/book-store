@@ -37,9 +37,6 @@
                 {if="(isset($NOWADMIN)&&$NOWADMIN==1)||$NOWUID==$value.uid"}
                 <button class="btn-xs btn-danger pull-right delete-review" review-id="{$value.review_id}" user-id="{$value.uid}">delete</button>
                 {/if}
-                {if="$NOWUID"}
-                    <button class="btn-xs btn-info pull-right report" report-type="1" data-id="{$value.review_id}">report</button>
-                {/if}
                 <br>
                 {if="strlen($value.review_content)"}
                 <p class="text-primary">{$value.review_content}</p>
