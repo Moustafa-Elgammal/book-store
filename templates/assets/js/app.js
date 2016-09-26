@@ -126,7 +126,26 @@ jQuery(document).ready(function($){
             }
         });
     });
+    /**
+     * add report
+     */
+    $('.report').click(function(){
+        var id = $(this).attr('data-id');
+        var type = $(this).attr('report-type');
 
+        $.ajax({
+            url:'admin/report.php',
+            method:'post',
+            data:'id='+id+'&report-type='+type
+        }).done(function(data){
+            var info = JSON.parse(data);
+            if(info.status){
+                $('#review-'+review_id).remove();
+            }else{
+                alert(info.msg);
+            }
+        });
+    });
 
     /**
      * logout ajax
