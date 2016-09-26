@@ -71,6 +71,9 @@ class ReviewsController {
         }
     }
 
+    /**
+     * delete review with user permeation
+     */
     public function DeleteReview()
     {
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
