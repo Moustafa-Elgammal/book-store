@@ -140,7 +140,7 @@ jQuery(document).ready(function($){
         }).done(function(data){
             var info = JSON.parse(data);
             if(info.status){
-                $('#review-'+review_id).remove();
+                alert(info.msg);
             }else{
                 alert(info.msg);
             }
