@@ -106,6 +106,9 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    /**
+     * delete review
+     */
     $('.delete-review').click(function(){
         var review_id = $(this).attr('review-id');
         var user_id = $(this).attr('user-id');
@@ -123,6 +126,8 @@ jQuery(document).ready(function($){
             }
         });
     });
+
+
     /**
      * logout ajax
      * just reload the current page
