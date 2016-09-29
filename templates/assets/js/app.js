@@ -113,7 +113,7 @@ jQuery(document).ready(function($){
                 $('.alert').addClass('alert-success');
                 $('.alert').removeClass('alert-danger');
                 $('.alert').show();
-                $('input').val('').delay(5000);
+                $('#reset-password  input').val('').delay(5000);
 
             }else{
                 $('#msg').html(info.msg);
