@@ -95,6 +95,39 @@ jQuery(document).ready(function($){
     });
 
     /**
+     * reset password
+     */
+    $('#reset-btn').click(function(ev){
+        $('.alert').hide();
+        var data = $('#reset-password').serialize();
+        var action= $('#reset-password').attr('action');
+
+        $.ajax({
+            method:'post',
+            url:action,
+            data:data
+        }).done(function (data){
+            var info=JSON.parse(data);
+            if(info.status){
+                $('#msg').html(info.msg);
+                $('.alert').addClass('alert-success');
+                $('.alert').removeClass('alert-danger');
+                $('.alert').show();
+                $('input').val('').delay(5000);
+
+            }else{
+                $('#msg').html(info.msg);
+                $('.alert').addClass('alert-danger');
+                $('.alert').removeClass('alert-success');
+                $('.alert').show();
+            }
+
+        });
+
+        ev.preventDefault();
+    });
+
+    /**
      * add book for user in interested
      */
     $('.want-read').click(function(){
