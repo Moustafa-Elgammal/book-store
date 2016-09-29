@@ -64,7 +64,11 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    /**
+     * update current user info
+     */
     $('#update-btn').click(function(ev){
+        $('.alert').hide();
         var data = $('#update-user-info').serialize();
         var action= $('#update-user-info').attr('action');
 
@@ -87,7 +91,6 @@ jQuery(document).ready(function($){
             }
 
         });
-
         ev.preventDefault();
     });
 
