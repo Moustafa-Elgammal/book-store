@@ -71,7 +71,7 @@
     </div>
     <section class="panel">
         <h3 class="text-center text-primary">Update Your info</h3>
-        <form id = "update-user-info" class="form-horizontal" action="updateinfo.php">
+        <form id = "update-user-info" class="form-horizontal" action="admin/updateinfo.php">
             <div class="box-body">
                 <div class="form-group">
                     <div class="col-sm-12">
@@ -96,6 +96,7 @@
 
             </div><!-- /.box-body -->
             <div class="box-footer text-center">
+                <input type="hidden" name="user_id" value="{$uid}">
                 <button id="update-btn" class="btn btn-primary">Update</button>
             </div><!-- /.box-footer -->
         </form>
