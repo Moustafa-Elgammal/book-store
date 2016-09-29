@@ -808,6 +808,70 @@ class UsersController
             System::RedirectTo('../../');
         }
 
+    }
+
+    public function ResetPassword(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            if (!isset($_SESSION['uid']) || $_SESSION['uid'] != (int)$_POST['user_id']) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Please, refresh this page."
+                )));
+            }
+            if(!isset($_POST['password']) || strlen($_POST['password']) < 8)
+                die(json_encode(array(
+                    'status'=>0,
+                    'msg'=>'the password must be more 8'
+                )));
+
+            if(!isset($_POST['repassword']) || $_POST['repassword'] !=  $_POST['password'])
+                die(json_encode(array(
+                    'status'=>0,
+                    'msg'=>'please make the passwords the same values'
+                )));
+
+            if ( System::Hash($_POST['password'])!= System::Hash($_POST['repassword']) ) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "keep the passwords matched"
+                )));
+            }
+
+            $user_old_info = $this->UsersModel->Get_By_ID($_SESSION['uid']);
+
+            if ( !isset($_POST['old_password']) || System::Hash($_POST['old_password'])!= $user_old_info['password']  ) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Please Enter the correct old password"
+                )));
+            }
+
+            if ( System::Hash($_POST['password'])== $user_old_info['password']  ) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "The new password looks the the same value of the old..."
+                )));
+            }
+
+
+            //init data
+            $data = array(
+                'password' => System::Hash($_POST['password'])
+            );
+
+            $x = $this->UsersModel->Update($_SESSION['uid'],$data);
+            $x?die(json_encode(array(
+                'status' => 1,
+                "msg" => "Successfully Updated....."
+            ))):die(json_encode(array(
+                'status' => 0,
+                "msg" => "Error in connection"
+            )));
+        }else{
+            System::RedirectTo('../../');
         }
+
+
+    }
 
 }
