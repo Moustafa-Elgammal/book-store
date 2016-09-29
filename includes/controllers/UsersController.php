@@ -152,7 +152,6 @@ class UsersController
      */
     public function Update()
     {
-
         if(isset($_POST['submit']))
         {
             //set variables
@@ -730,5 +729,82 @@ class UsersController
         System::Get('tpl')->assign('users',$users);
         System::Get('tpl')->draw('users');
     }
+
+    public function updateInfo(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            if (!isset($_SESSION['uid']) || $_SESSION['uid'] != (int)$_POST['user_id']) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Please, refresh this page."
+                )));
+            }
+
+            //check title
+            if (!isset($_POST['name']) || strlen($_POST['name']) < 6) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "The name must be more than 6 letters"
+                )));
+            }
+
+            if (!isset($_POST['username']) || strlen($_POST['username']) <= 4) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "The username must be more than 4 letters"
+                )));
+            }
+
+            $user_old_info = $this->UsersModel->Get_By_ID($_SESSION['uid']);
+            if ($this->UsersModel->UsernameExist($_POST['username']) && $_POST['username'] != $user_old_info['username']  ) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Sorry, this username already taken"
+                )));
+            }
+
+            if (!isset($_POST['email']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL )) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Enter correct email."
+                )));
+            }
+
+            if ($this->UsersModel->emailExist($_POST['email']) && $_POST['email'] != $user_old_info['email'] ) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "This email already with another user."
+                )));
+            }
+
+            if (!isset($_POST['content']) || strlen($_POST['content']) < 25) {
+                die(json_encode(array(
+                    'status' => 0,
+                    "msg" => "Please make your description at least 25 letters"
+                )));
+            }
+
+            //init data
+            $data = array(
+                'name' => $_POST['name'],
+                'username'=>$_POST['username'],
+                'email'=>$_POST['email'],
+                'about'=>$_POST['content']
+            );
+
+            $_SESSION['name'] = $_POST['name']; //update session
+
+            $x = $this->UsersModel->Update($_SESSION['uid'],$data);
+            $x?die(json_encode(array(
+                'status' => 1,
+                "msg" => "Successfully Updated....."
+            ))):die(json_encode(array(
+                'status' => 0,
+                "msg" => "Error in connection"
+            )));
+        }else{
+            System::RedirectTo('../../');
+        }
+
+        }
 
 }
