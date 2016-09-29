@@ -100,12 +100,14 @@ class UsersMetaController {
 
     }
 
-    public function UserProfile(){
+    public function UserProfile(UsersModel $user){
         $readBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],WANT_TO_READ);
         $downloadedBooks = $this->MetaModel->GetByMetaType($_SESSION['uid'],DOWNLOADED);
+        $user_info = $user->Get_By_ID($_SESSION['uid']);
 
         System::Get('tpl')->assign('reads',$readBooks);
         System::Get('tpl')->assign('downloads',$downloadedBooks);
+        System::Get('tpl')->assign($user); //user info
 //        echo'<pre>';
 //        var_dump($readBooks);
 //        echo'<hr>';
