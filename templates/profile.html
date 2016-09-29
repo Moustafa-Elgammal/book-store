@@ -101,6 +101,32 @@
             </div><!-- /.box-footer -->
         </form>
 
+        <h3 class="text-center">Reset Your Password</h3>
+
+        <form id = "reset-password" class="form-horizontal" action="reset_password.php">
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" class="form-control" name="old_password" id="old_password" placeholder="old password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="password" class="form-control" name="repassword" id="repassword" placeholder="retype the password">
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button id="reset-btn" class="btn btn-primary">Rest Now</button>
+            </div><!-- /.box-footer -->
+        </form>
+
+
         <div class="alert alert-block fade in" style="display: none">
             <h4>
                 <p id="msg"></p>
