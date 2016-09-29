@@ -64,6 +64,33 @@ jQuery(document).ready(function($){
         ev.preventDefault();
     });
 
+    $('#update-btn').click(function(ev){
+        var data = $('#update-user-info').serialize();
+        var action= $('#update-user-info').attr('action');
+
+        $.ajax({
+            method:'post',
+            url:action,
+            data:data
+        }).done(function (data){
+            var info=JSON.parse(data);
+            if(info.status){
+                $('#msg').html(info.msg);
+                $('.alert').addClass('alert-success');
+                $('.alert').removeClass('alert-danger');
+                $('.alert').show();
+            }else{
+                $('#msg').html(info.msg);
+                $('.alert').addClass('alert-danger');
+                $('.alert').removeClass('alert-success');
+                $('.alert').show();
+            }
+
+        });
+
+        ev.preventDefault();
+    });
+
     /**
      * add book for user in interested
      */
