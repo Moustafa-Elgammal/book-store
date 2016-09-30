@@ -107,7 +107,7 @@ class UsersMetaController {
 
         System::Get('tpl')->assign('reads',$readBooks);
         System::Get('tpl')->assign('downloads',$downloadedBooks);
-        System::Get('tpl')->assign($user); //user info
+        System::Get('tpl')->assign($user_info); //user info
 //        echo'<pre>';
 //        var_dump($readBooks);
 //        echo'<hr>';

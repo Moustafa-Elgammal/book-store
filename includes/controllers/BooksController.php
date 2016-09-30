@@ -207,13 +207,17 @@ class BooksControllers {
             $id = (int)$_GET['id'];
             $book = $this->booksModel->GetById($id);
           //  die(var_dump($book));
-            $categories = array(); // for the cats.
-            System::Get('db')->Execute("SELECT `category_id`,`category_title` FROM `book_store_categories` ORDER BY `category_id` ASC");
-            if(System::Get('db')->AffectedRows())
-                $categories = System::Get('db')->GetRows();
-            System::Get('tpl')->assign('categories',$categories);
-            System::Get('tpl')->assign($book);
-            System::Get('tpl')->draw('updatebook');
+            if($_SESSION['uid'] == $book['book_author_id'] || $_SESSION['is_admin'] == 1) {
+                $categories = array(); // for the cats.
+                System::Get('db')->Execute("SELECT `category_id`,`category_title` FROM `book_store_categories` ORDER BY `category_id` ASC");
+                if (System::Get('db')->AffectedRows())
+                    $categories = System::Get('db')->GetRows();
+                System::Get('tpl')->assign('categories', $categories);
+                System::Get('tpl')->assign($book);
+                System::Get('tpl')->draw('updatebook');
+            }else{
+                System::RedirectTo ( 'index.author.php' );
+            }
 
         }
 
